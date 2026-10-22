@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الإعلام الجديد</title>
+<meta name="description" content="موقع تعليمي عن الإعلام الجديد.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#fff; --text:#18202f; --muted:#5b6578; --line:#e3e7ef;
+    --p:#0f766e; --p2:#134e4a; --p-soft:#e6f4f2; --a:#f59e0b; --a-soft:#fef3c7; --b:#4f46e5;
+    --nav:rgba(255,255,255,.94); --ok:#dcfce7; --bad:#fee2e2; --note-fg:#78350f; --note-line:#fcd34d; --on-p:#fff;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+    --bg:#0e1716; --card:#15211f; --text:#e6efed; --muted:#9fb0ad; --line:#263533; --p:#2dd4bf; --p2:#115e59; --p-soft:#123a36; --a:#fbbf24; --a-soft:#3a2e10; --b:#818cf8;
+    --nav:rgba(14,23,22,.94); --ok:#123d24; --bad:#4a1a1a; --note-fg:#fde68a; --note-line:#6b5414; color-scheme:dark }}
+  :root[data-theme="dark"]{
+    --bg:#0e1716; --card:#15211f; --text:#e6efed; --muted:#9fb0ad;
+    --line:#263533; --p:#2dd4bf; --p2:#115e59; --p-soft:#123a36; --a:#fbbf24; --a-soft:#3a2e10; --b:#818cf8;
+    --nav:rgba(14,23,22,.94); --ok:#123d24; --bad:#4a1a1a; --note-fg:#fde68a; --note-line:#6b5414; color-scheme:dark }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Tajawal',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.9;font-size:17px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .muted{color:var(--muted)}
+
+  /* nav */
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--card)}
+  nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--nav);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-weight:800;color:var(--p2);display:flex;align-items:center;gap:8px}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:10px;padding:6px 12px;font:inherit;cursor:pointer}
+  .links{display:flex;gap:4px;font-size:.92rem}
+  .links a{padding:6px 10px;border-radius:8px;color:var(--muted)}
+  .links a:hover{background:var(--p-soft);color:var(--p2)}
+  @media (max-width:900px){
+    .menu-btn{display:block}
+    .links{display:none;position:absolute;top:60px;right:0;left:0;background:var(--card);flex-direction:column;padding:8px 16px 14px;border-bottom:1px solid var(--line)}
+    .links.open{display:flex}
+  }
+
+  /* hero */
+  .hero{background:radial-gradient(circle at 20% 20%,#14b8a6 0,transparent 45%),linear-gradient(135deg,#0f766e,#134e4a);color:#fff;padding:64px 0 56px;overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+  @media (max-width:800px){.hero .wrap{grid-template-columns:1fr;text-align:center}.hero svg{max-width:300px;margin:0 auto}}
+  .kicker{display:inline-block;background:rgba(255,255,255,.16);padding:4px 14px;border-radius:999px;font-size:.88rem;margin-bottom:12px}
+  .hero h1{font-size:clamp(2.2rem,7vw,3.6rem);font-weight:800;line-height:1.2}
+  .hero p{opacity:.92;margin-top:12px;font-size:1.12rem}
+  .hero .btn{margin-top:22px}
+  .btn{display:inline-block;background:var(--a);color:#1b1b1b;font-weight:700;padding:11px 26px;border-radius:12px;border:0;font:inherit;font-weight:700;cursor:pointer;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .net line{stroke:rgba(255,255,255,.35);stroke-width:1.5}
+  .net circle{fill:#fff}
+  .net .pulse{animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+
+  /* sections */
+  section{padding:56px 0;scroll-margin-top:60px}
+  section:nth-of-type(even){background:var(--card)}
+  .eyebrow{color:var(--p);font-weight:700;font-size:.9rem}
+  h2{font-size:clamp(1.5rem,4.5vw,2rem);font-weight:800;margin-bottom:6px}
+  .lead{color:var(--muted);max-width:760px;margin-bottom:26px}
+  h3{font-size:1.12rem;font-weight:700;margin-bottom:6px}
+
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+  section:nth-of-type(even) .card{background:var(--bg)}
+  .card p{color:var(--muted)}
+  .icon{width:46px;height:46px;border-radius:12px;background:var(--p-soft);color:var(--p);display:grid;place-items:center;margin-bottom:12px}
+  .icon svg{width:24px;height:24px}
+
+  /* equation infographic */
+  .equation{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin:8px 0 28px}
+  .eq-item{background:var(--card);border:2px solid var(--p);border-radius:16px;padding:14px 18px;text-align:center;min-width:120px;font-weight:700}
+  .eq-item svg{width:34px;height:34px;color:var(--p);display:block;margin:0 auto 4px}
+  .eq-op{font-size:2rem;font-weight:800;color:var(--a)}
+  .eq-result{background:var(--p2);color:var(--on-p);border-color:var(--p)}
+  .eq-result svg{color:var(--on-p)}
+
+  /* tabs */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .tab{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 16px;font:inherit;font-size:.95rem;cursor:pointer;color:var(--muted)}
+  .tab[aria-selected="true"]{background:var(--p2);border-color:var(--p);color:var(--on-p)}
+  .panel{background:var(--card);border:1px solid var(--line);border-right:5px solid var(--p);border-radius:14px;padding:20px;min-height:110px}
+  section:nth-of-type(even) .panel,section:nth-of-type(even) .tab:not([aria-selected="true"]){background:var(--bg)}
+
+  /* timeline / pipeline */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+  @media (max-width:700px){.compare{grid-template-columns:1fr}}
+  .flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .flow span{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:.9rem}
+  .flow b{color:var(--muted)}
+  .stages{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;counter-reset:st}
+  @media (max-width:700px){.stages{grid-template-columns:1fr 1fr}}
+  .stage{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;text-align:center;font:inherit;transition:.2s}
+  .stage:hover{border-color:var(--p)}
+  .stage[aria-pressed="true"]{border-color:var(--p);background:var(--p-soft)}
+  .stage .n{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--p2);color:var(--on-p);font-weight:800;margin-bottom:6px}
+  .stage b{display:block}
+  .stage-detail{margin-top:14px}
+
+  /* numbered list */
+  .num-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;list-style:none;counter-reset:n}
+  .num-list li{counter-increment:n;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px 14px 16px;display:flex;gap:12px}
+  section:nth-of-type(even) .num-list li{background:var(--bg)}
+  .num-list li::before{content:counter(n);flex:0 0 32px;height:32px;border-radius:10px;background:var(--a-soft);color:var(--note-fg);font-weight:800;display:grid;place-items:center}
+  .num-list li span{color:var(--muted)}
+  .num-list li strong{color:var(--text)}
+
+  /* accordion */
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+  section:nth-of-type(even) details{background:var(--bg)}
+  summary{cursor:pointer;padding:14px 18px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.4rem;color:var(--p)}
+  details[open] summary::after{content:"−"}
+  details .body{padding:0 18px 16px;color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chips span{background:var(--p-soft);color:var(--p2);border-radius:999px;padding:3px 12px;font-size:.92rem}
+
+  /* signal demo */
+  .signal{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+  .signal svg{width:100%;height:150px;display:block}
+  .signal .wave{fill:none;stroke-width:3;stroke-linejoin:round;transition:opacity .4s}
+  .toggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--bg);margin-bottom:12px}
+  .toggle button{border:0;background:none;font:inherit;padding:5px 16px;border-radius:999px;cursor:pointer;color:var(--muted)}
+  .toggle button[aria-pressed="true"]{background:var(--p2);color:var(--on-p)}
+
+  /* table */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+  table{width:100%;border-collapse:collapse;min-width:520px;background:var(--card)}
+  th,td{padding:12px 16px;text-align:right;border-bottom:1px solid var(--line)}
+  th{background:var(--p2);color:var(--on-p);font-weight:700}
+  tr:last-child td{border-bottom:0}
+  td:first-child{font-weight:700;width:22%}
+
+  /* quiz */
+  .q{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:12px}
+  .q p{font-weight:700;margin-bottom:10px}
+  .opts{display:grid;gap:8px}
+  .opt{text-align:right;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 14px;font:inherit;cursor:pointer}
+  .opt:hover:not(:disabled){border-color:var(--p)}
+  .opt.right{background:var(--ok);border-color:#16a34a}
+  .opt.wrong{background:var(--bad);border-color:#dc2626}
+  .opt:disabled{cursor:default}
+  .score{position:sticky;bottom:12px;background:var(--p2);color:#fff;border-radius:14px;padding:10px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .score button{background:#fff;color:var(--p2);border:0;border-radius:10px;padding:6px 14px;font:inherit;font-weight:700;cursor:pointer}
+
+  /* footer */
+  footer{background:var(--p2);color:#d1fae5;padding:40px 0 28px}
+  footer h3{color:#fff}
+  footer ol{padding-right:20px;font-size:.92rem}
+  .team{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .team span{background:rgba(255,255,255,.12);border-radius:999px;padding:4px 14px}
+  .copy{margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.15);font-size:.88rem;text-align:center;opacity:.8}
+
+  @media (prefers-reduced-motion:reduce){.net .pulse{animation:none}}
+
+  /* multi-page */
+  .links a[aria-current="page"]{background:var(--p-soft);color:var(--p2);font-weight:700}
+  .page-head{background:linear-gradient(135deg,#0f766e,#134e4a);color:#fff;padding:34px 0 30px}
+  .page-head .crumb{font-size:.9rem;opacity:.85}
+  .page-head .crumb a{text-decoration:underline}
+  .page-head h1{font-size:clamp(1.7rem,5.5vw,2.4rem);font-weight:800;line-height:1.3;margin-top:4px}
+  .pager{display:flex;justify-content:space-between;gap:12px;padding:8px 16px 48px;flex-wrap:wrap}
+  .pager a{flex:1 1 220px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;transition:border-color .2s}
+  .pager a:hover{border-color:var(--p)}
+  .pager small{display:block;color:var(--muted)}
+  .pager b{color:var(--p2)}
+  .pager .next{text-align:left}
+  .topic{display:flex;flex-direction:column;transition:transform .15s,border-color .15s}
+  .topic:hover{transform:translateY(-3px);border-color:var(--p)}
+  .topic .more{margin-top:auto;padding-top:10px;color:var(--p);font-weight:700}
+  section.home-sec{background:var(--bg)}
+  footer{padding:24px 0}
+  footer .copy{margin-top:0;border-top:0;padding-top:0}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+/* ===== gov-style theme ===== */
+  /* light, airy pages; teal tools; two-tone display titles; outlined parallelogram motif */
+  :root{
+    --bg:#f5f9fa; --card:#ffffff; --text:#121a1d; --muted:#56666b; --line:#dbe6e9;
+    --p:#3a8d9a; --p2:#2b6f7a; --p-soft:#eaf3f5; --mint:#4fa98d; --a:#3a8d9a; --a-soft:#eaf3f5;
+    --note-fg:#2b6f7a; --note-line:#bfdde2; --on-p:#ffffff; --nav:rgba(255,255,255,.96);
+    --ok:#dcf3e6; --bad:#fbe3e3; --foot:#123a42; --foot-fg:#cfe2e5;
+    --font:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+    --bg:#0c1416; --card:#121d20; --text:#e8f0f2; --muted:#9bb0b5; --line:#21343a;
+    --p:#5fb4c1; --p2:#2b6f7a; --p-soft:#15292e; --mint:#7dd3b6; --a:#5fb4c1; --a-soft:#15292e;
+    --note-fg:#9fd6df; --note-line:#24474e; --nav:rgba(12,20,22,.96); --ok:#123a26; --bad:#4a1c1c; --foot:#08191c; --foot-fg:#b9d0d4; color-scheme:dark }}
+  :root[data-theme="dark"]{
+    --bg:#0c1416; --card:#121d20; --text:#e8f0f2; --muted:#9bb0b5; --line:#21343a;
+    --p:#5fb4c1; --p2:#2b6f7a; --p-soft:#15292e; --mint:#7dd3b6; --a:#5fb4c1; --a-soft:#15292e;
+    --note-fg:#9fd6df; --note-line:#24474e; --nav:rgba(12,20,22,.96); --ok:#123a26; --bad:#4a1c1c; --foot:#08191c; --foot-fg:#b9d0d4; color-scheme:dark }
+  body{font-family:var(--font);font-size:1.0625rem;background:var(--bg);color:var(--text)}
+  h1,h2,h3{text-wrap:balance}
+  body::before{background:var(--nav)}
+
+  .topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--nav);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+  .brand{display:flex;align-items:center;gap:10px;color:var(--p)}
+  .brand .mark{width:38px;height:38px;flex:none}
+  .brand span{display:flex;flex-direction:column;line-height:1.25}
+  .brand b{color:var(--muted);font-weight:600;font-size:1.02rem}
+  .brand small{color:var(--muted);font-size:.62rem;letter-spacing:.08em;opacity:.85}
+  .tools{display:flex;align-items:center;gap:4px}
+  .tool{background:none;border:0;color:var(--p);width:40px;height:40px;border-radius:10px;display:grid;place-items:center;cursor:pointer}
+  .tool:hover{background:var(--p-soft)}
+  .tool svg{width:22px;height:22px}
+  @media (max-width:380px){#fs-down{display:none}}
+  .menu-btn{display:grid;place-items:center;width:46px;height:46px;border-radius:10px;background:var(--p);color:var(--on-p);border:0;margin-inline-start:6px}
+  .menu-btn svg{width:26px;height:26px}
+
+  .drawer{position:fixed;inset:0;z-index:50;background:rgba(10,25,28,.35);display:none}
+  .drawer:target{display:block}
+  .drawer-in{position:absolute;inset:0 0 0 auto;width:min(420px,100%);background:var(--card);overflow-y:auto;padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) 16px;box-shadow:0 0 40px rgba(0,0,0,.15)}
+  .drawer-top{display:flex;justify-content:flex-end;margin-bottom:8px}
+  .dnav{display:flex;flex-direction:column}
+  .ditem,.dgroup summary{display:flex;justify-content:space-between;align-items:center;padding:18px 6px;border-bottom:1px solid var(--line);font-size:1.05rem;color:var(--text);cursor:pointer;list-style:none}
+  .dgroup summary::-webkit-details-marker{display:none}
+  .dgroup summary::after{content:none}
+  .dgroup{background:none;border:0;border-radius:0;margin:0}
+  .chev{width:18px;height:18px;transition:transform .2s;color:var(--muted)}
+  .dgroup[open] .chev{transform:rotate(180deg)}
+  .sub{background:var(--p-soft);display:flex;flex-direction:column;padding:4px 22px}
+  .sub a{padding:15px 0;border-bottom:1px solid var(--line);color:var(--text)}
+  .sub a:last-child{border-bottom:0}
+  .dnav a[aria-current="page"]{color:var(--p);font-weight:700}
+
+  .hero,.page-head{position:relative;overflow:hidden;color:var(--text);background:radial-gradient(60% 70% at 35% 40%,var(--p-soft),transparent 70%),var(--bg);padding:0}
+  .hero-in,.ph-in{position:relative;padding-block:28px 52px}
+  .deco{position:absolute;left:-60px;top:10px;width:min(360px,70%);height:auto;pointer-events:none;z-index:0}
+  .hero-in>*:not(.deco),.ph-in>*:not(.deco){position:relative;z-index:1}
+  .crumb{font-size:.85rem;color:var(--muted);opacity:1}
+  .crumb a{text-decoration:none;color:var(--muted)}
+  .crumb a:hover{color:var(--p)}
+  .crumb i{font-style:normal;margin-inline:6px;opacity:.6}
+  .big{font-size:clamp(2.6rem,11vw,4.4rem);font-weight:700;line-height:1.15;margin-block:28px 18px;letter-spacing:-.01em}
+  .big span{color:var(--mint)}
+  .ph-desc{color:var(--muted);font-size:1.1rem;max-width:40ch}
+  .statement{margin-top:34px;max-width:46ch}
+  .statement h2{font-size:clamp(2rem,8vw,2.8rem);font-weight:700;margin-bottom:8px}
+  .statement p{font-size:1.1rem}
+  .hero .btn{margin-top:30px}
+  .btn{background:var(--p);color:var(--on-p);border-radius:10px;font-weight:600}
+
+  section{padding-block:52px}
+  .eyebrow{color:var(--mint);font-weight:600;letter-spacing:.02em}
+  h2{font-weight:700}
+  .card{border-radius:12px;box-shadow:none}
+  .icon{background:var(--p-soft);color:var(--p);border-radius:10px}
+  .panel{border-right-color:var(--p)}
+  .tab[aria-selected="true"],.toggle button[aria-pressed="true"],.stage .n,.eq-result,th{background:var(--p2)}
+  .eq-item{border-color:var(--p)}
+  .eq-op{color:var(--mint)}
+  .num-list li::before{background:var(--p-soft);color:var(--note-fg)}
+  .chips span{background:var(--p-soft);color:var(--note-fg)}
+  .score{background:var(--p2)}
+  .pager b{color:var(--p)}
+  .topic .more{color:var(--p)}
+  footer{background:var(--foot);color:var(--foot-fg)}
+  footer h3{color:var(--on-p)}
+  .menu-btn{padding:0;font-size:inherit}
+  .dgroup summary{font-weight:500}
+  .hero .wrap{display:block;text-align:right}
+  .hero .btn{display:inline-block}
+  .hero p{opacity:1}
+  .deco{left:-140px;top:30px}
+  .dgroup[open] summary::after{content:none}
+  .page-head .crumb a{text-decoration:none}
+  .page-head h1.big,.hero h1.big{font-size:clamp(2.6rem,11vw,4.4rem);font-weight:700;line-height:1.15;margin-block:28px 18px}
+  @media (min-width:800px){.deco{left:-40px;width:420px}}
+/* ===== motion ===== */
+  .mint{color:var(--mint)}
+  section.motion{background:var(--card)}
+  .mg-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center}
+  @media (max-width:720px){.mg-grid{grid-template-columns:1fr}.mg-arrow{transform:rotate(-90deg);justify-self:center}}
+  .mg-card{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px;margin:0;min-width:0}
+  .mg-card.new{border-color:var(--p)}
+  .mg{width:100%;height:auto;display:block}
+  .mg figcaption,.mg-card figcaption{display:flex;flex-direction:column;text-align:center;margin-top:6px}
+  .mg-card figcaption span{color:var(--muted);font-size:.9rem}
+  .mg-arrow{font-size:2rem;color:var(--mint);font-weight:700}
+  .mg .edge line{stroke:var(--line);stroke-width:2}
+  .mg .edge.dashed line{stroke-dasharray:6 6;animation:march 1.2s linear infinite}
+  .mg .ring{fill:none;stroke:var(--muted);stroke-width:1.5}
+  .mg .tower path,.mg .tower circle{fill:var(--muted)}
+  .mg .rcv{fill:var(--card);stroke:var(--muted);stroke-width:2}
+  .mg .pkt{fill:var(--p)}
+  .mg .pkt.alt{fill:var(--mint)}
+  .mg .node{fill:var(--card);stroke:var(--p);stroke-width:2.5}
+  .mg .node.hub{fill:var(--p)}
+  .mg .hub-t{fill:var(--on-p);font-size:15px;font-weight:700}
+  @keyframes march{to{stroke-dashoffset:-12}}
+
+  /* equation pop, signal flow, environment packets, deco drift (all start visible) */
+  .eq-item,.eq-op{animation:pop 3.2s ease-in-out infinite}
+  .equation>*:nth-child(1){animation-delay:0s}.equation>*:nth-child(2){animation-delay:.2s}
+  .equation>*:nth-child(3){animation-delay:.4s}.equation>*:nth-child(4){animation-delay:.6s}
+  .equation>*:nth-child(5){animation-delay:.8s}.equation>*:nth-child(6){animation-delay:1s}
+  .equation>*:nth-child(7){animation-delay:1.2s}
+  @keyframes pop{0%,70%,100%{transform:none}80%{transform:translateY(-6px)}}
+  .signal .wave{stroke-dasharray:14 6;animation:march 0.9s linear infinite}
+  .flow b{display:inline-block}
+  .flow.one b{animation:nudge 1.4s ease-in-out infinite}
+  .flow.two b{animation:swap 1.8s ease-in-out infinite;color:var(--p)}
+  @keyframes nudge{0%,100%{transform:translateX(0);opacity:.5}50%{transform:translateX(-5px);opacity:1}}
+  @keyframes swap{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+  .deco{animation:drift 9s ease-in-out infinite alternate}
+  @keyframes drift{to{transform:translate(14px,8px)}}
+  @media (prefers-reduced-motion:reduce){
+    .mg .edge.dashed line,.eq-item,.eq-op,.signal .wave,.flow b,.deco{animation:none}
+  }
+/* ===== banners ===== */
+  section.banner{background:var(--bg);padding-block:8px 24px}
+  .mg-banner{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:0}
+  .mg-banner .mg{max-height:300px}
+  .mg-banner figcaption{display:flex;flex-direction:column;gap:2px;color:var(--muted);font-size:.95rem;margin-top:8px;max-width:70ch}
+  .mg .t{fill:var(--text);font-family:var(--font)}
+  .mg .t.m{fill:var(--muted)}
+  .mg .t.on{fill:var(--on-p)}
+  .mg .ic{fill:var(--card);stroke:var(--p);stroke-width:2.5}
+  .mg .ln{fill:none;stroke:var(--p);stroke-width:2.5;stroke-linecap:round}
+  .mg .ln.lt{stroke:var(--line)}
+  .mg .dev{fill:var(--text);opacity:.9}
+  .mg .scr{fill:var(--bg)}
+  .mg .tile{fill:var(--p)} .mg .tile.b{fill:var(--mint)} .mg .tile.c{fill:var(--p-soft)}
+  .mg .halo{fill:none;stroke:var(--mint);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:halo 4s ease-out infinite}
+  @keyframes halo{0%,40%{opacity:0;transform:scale(.6)}55%{opacity:.8}100%{opacity:0;transform:scale(1.25)}}
+  .mg .conv{transform-box:fill-box;transform-origin:center;animation:conv 4s ease-in-out infinite}
+  @keyframes conv{0%,15%,100%{transform:none;opacity:1}45%,55%{transform:translate(var(--dx),var(--dy)) scale(.35);opacity:.15}}
+  .mg .ring2{fill:none;stroke:var(--p);stroke-width:1.5;stroke-dasharray:4 6}
+  .mg .ring2.dim{stroke:var(--line)}
+  .mg .hubc{fill:var(--p2)}
+  .mg .pill{fill:var(--card);stroke:var(--p);stroke-width:1.8}
+  .mg .edge-l{fill:none;stroke:var(--line);stroke-width:3}
+  .mg .dashed2{stroke-dasharray:8 7;animation:march 1.2s linear infinite}
+  .mg .box{fill:var(--card);stroke:var(--p);stroke-width:2}
+  .mg .numc{fill:var(--p2)}
+  .mg .stg{animation:stg 3s ease-in-out infinite}
+  @keyframes stg{0%,100%{opacity:1}12%{opacity:.55}}
+  .mg .gear{fill:none;stroke:var(--p);stroke-width:12}
+  .mg .gear-in{fill:var(--p-soft);stroke:var(--p);stroke-width:2}
+  .mg .globe{fill:var(--p-soft);stroke:var(--p);stroke-width:2.5}
+  .mg .coin{fill:var(--mint)}
+  .mg .mega{fill:var(--p)}
+  .mg .wave2{fill:none;stroke:var(--mint);stroke-width:4;stroke-linecap:round;animation:wv 1.4s ease-in-out infinite}
+  @keyframes wv{0%,100%{opacity:.2}50%{opacity:1}}
+  .mg .feed{animation:feed 12s linear infinite}
+  @keyframes feed{to{transform:translateY(-312px)}}
+  .mg .fcard{fill:var(--card);stroke:var(--line)} .mg .fcard.b{fill:var(--p-soft)}
+  .mg .fdot{fill:var(--p)} .mg .fdot.b{fill:var(--mint)}
+  .mg .tagf{animation:tagf 3s ease-in-out infinite}
+  @keyframes tagf{0%,100%{transform:none}50%{transform:translateY(-5px)}}
+  .mg .vn{stroke-width:2.5}
+  .mg .vn.a{fill:var(--p);fill-opacity:.14;stroke:var(--p)}
+  .mg .vn.b{fill:var(--mint);fill-opacity:.18;stroke:var(--mint)}
+  .mg .meet{animation:meet 5s ease-in-out infinite}
+  @keyframes meet{0%,100%{opacity:.35}50%{opacity:1}}
+  .mg .bits{fill:var(--p);font-family:ui-monospace,Menlo,monospace;font-size:16px;letter-spacing:3px;animation:bits 10s linear infinite}
+  @keyframes bits{to{transform:translateX(-50%)}}
+  .mg .bits{transform-box:fill-box}
+  @media (prefers-reduced-motion:reduce){
+    .mg .halo,.mg .conv,.mg .dashed2,.mg .stg,.mg .wave2,.mg .feed,.mg .tagf,.mg .meet,.mg .bits{animation:none}
+  }
+/* ===== KFU identity ===== */
+  /* KFU palette: teal + gold on navy-tinted neutrals; Kufi display over Plex body */
+  :root{
+    --bg:#f6f7f5; --card:#ffffff; --text:#0b2133; --muted:#566573; --line:#e1e6e8;
+    --p:#0d7077; --p2:#093556; --p-soft:#e6f0f0; --mint:#b0883c; --gold:#c69a47; --gold-soft:#f5eddc;
+    --a:#0d7077; --a-soft:#e6f0f0; --note-fg:#0d7077; --note-line:#c9dcdc; --on-p:#ffffff;
+    --nav:rgba(255,255,255,.96); --ok:#dcf1e3; --bad:#fbe4e4; --foot:#093556; --foot-fg:#c9d6e0;
+    --font:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;
+    --display:'Noto Kufi Arabic','IBM Plex Sans Arabic',Tahoma,sans-serif;
+    --shadow:0 1px 2px rgba(9,53,86,.05),0 8px 24px rgba(9,53,86,.06);
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+    --bg:#06131d; --card:#0c1e2b; --text:#e9eef2; --muted:#9fb0bd; --line:#1b3345;
+    --p:#3fb1b8; --p2:#0e4a6e; --p-soft:#0f2b37; --mint:#dcb56d; --gold:#dcb56d; --gold-soft:#2a2414;
+    --a:#3fb1b8; --a-soft:#0f2b37; --note-fg:#8fd3d7; --note-line:#1f4652;
+    --nav:rgba(6,19,29,.95); --ok:#123a26; --bad:#4a1c1c; --foot:#031019; --foot-fg:#a9bccb;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark }}
+  :root[data-theme="dark"]{
+    --bg:#06131d; --card:#0c1e2b; --text:#e9eef2; --muted:#9fb0bd; --line:#1b3345;
+    --p:#3fb1b8; --p2:#0e4a6e; --p-soft:#0f2b37; --mint:#dcb56d; --gold:#dcb56d; --gold-soft:#2a2414;
+    --a:#3fb1b8; --a-soft:#0f2b37; --note-fg:#8fd3d7; --note-line:#1f4652;
+    --nav:rgba(6,19,29,.95); --ok:#123a26; --bad:#4a1c1c; --foot:#031019; --foot-fg:#a9bccb;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark }
+
+  body{font-family:var(--font);background:var(--bg);color:var(--text)}
+  h1,h2,h3,.big,.statement h2,.brand b{font-family:var(--display)}
+  h2{letter-spacing:-.005em}
+
+  .uniband{background:var(--p2);color:#e7eef3;font-size:.8rem}
+  .ub-in{display:flex;justify-content:space-between;gap:10px;padding-block:6px;flex-wrap:wrap}
+  .uniband i{font-style:normal;color:var(--gold);margin-inline:4px}
+  .ub-tag{color:var(--gold);font-weight:600}
+  @media (max-width:420px){.ub-tag{display:none}}
+
+  .topbar{box-shadow:0 1px 0 var(--line)}
+  .brand{color:var(--text)}
+  .brand .mark{width:40px;height:40px}
+  .mark .mk-bg{fill:var(--p2)} .mark .mk-ln{stroke:var(--gold)} .mark .mk-dot{fill:var(--gold)}
+  .brand b{color:var(--text);font-size:1.02rem;font-weight:700}
+  .brand small{font-size:.68rem;letter-spacing:0;color:var(--muted)}
+  .tool{color:var(--p)}
+  .menu-btn{background:var(--p2)}
+  .sub{background:var(--p-soft)}
+  .dnav a[aria-current="page"]{color:var(--p)}
+
+  .hero,.page-head{background:radial-gradient(55% 75% at 20% 30%,var(--gold-soft),transparent 70%),radial-gradient(60% 70% at 85% 20%,var(--p-soft),transparent 70%),var(--bg)}
+  .hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center;padding-block:44px 52px}
+  @media (max-width:820px){.hero-in{grid-template-columns:1fr}}
+  .hero-kicker,.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--mint);font-weight:600;font-size:.88rem;letter-spacing:.02em}
+  .hero-kicker::before,.eyebrow::before{content:"";width:22px;height:2px;background:var(--gold);border-radius:2px}
+  .hero h1.big,.page-head h1.big{font-family:var(--display);font-weight:700;line-height:1.25}
+  .big span{color:var(--mint)}
+  .hero-lead{font-size:1.15rem;color:var(--muted);max-width:44ch}
+  .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+  .hero .btn{margin-top:0}
+  .btn{background:var(--p2);border:1px solid var(--p2);color:var(--on-p);border-radius:10px;padding:11px 24px;font-weight:600;transition:transform .15s,box-shadow .15s}
+  .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn.ghost{background:transparent;color:var(--p2);border-color:var(--line)}
+  :root[data-theme="dark"] .btn.ghost{color:var(--text)}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.ghost{color:var(--text)}}
+  .hero-visual{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:0;box-shadow:var(--shadow);min-width:0}
+  .hero-visual figcaption{text-align:center;color:var(--muted);font-size:.88rem;margin-top:4px}
+  .hero-mg{width:100%;height:auto}
+
+  section.stats{padding-block:0;background:transparent}
+  .st-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--p2);color:#fff;border-radius:16px;overflow:hidden;transform:translateY(-22px)}
+  @media (max-width:640px){.st-grid{grid-template-columns:1fr 1fr}}
+  .st-grid>div{padding:18px 16px;border-inline-start:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column}
+  .st-grid>div:first-child{border-inline-start:0}
+  .st-grid b{font-family:var(--display);font-size:2rem;color:var(--gold);line-height:1.2}
+  .st-grid span{color:#d5e1ea;font-size:.92rem}
+  section.idea{padding-block:12px 40px;background:transparent}
+  .idea .statement{margin:0;max-width:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+  .idea .statement p{margin-top:6px;font-size:1.08rem}
+
+  .page-head{border-bottom:1px solid var(--line)}
+  .pg-no{position:absolute;left:max(16px,env(safe-area-inset-left,0px));bottom:-18px;font-family:var(--display);font-size:clamp(5rem,20vw,9rem);font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:2px var(--gold);opacity:.35;z-index:0;pointer-events:none}
+  .ph-in{overflow:hidden}
+
+  .card{border-radius:14px;transition:box-shadow .2s,transform .2s,border-color .2s}
+  .card:hover{box-shadow:var(--shadow)}
+  .icon{background:var(--gold-soft);color:var(--p)}
+  .topic:hover{border-color:var(--gold)}
+  .topic .more{color:var(--p)}
+  .num-list li::before{background:var(--gold-soft);color:var(--mint)}
+  .chips span{background:var(--p-soft);color:var(--p)}
+  .tab[aria-selected="true"],.toggle button[aria-pressed="true"],.stage .n,.eq-result,th,.score{background:var(--p2)}
+  .eq-item{border-color:var(--p)}
+  .eq-op{color:var(--gold)}
+  .stage[aria-pressed="true"]{border-color:var(--p);background:var(--p-soft)}
+  .panel{border-right-color:var(--gold)}
+  .mg-banner{border-radius:18px;box-shadow:var(--shadow)}
+  .mg-card.new{border-color:var(--gold)}
+  .mg .pkt.alt,.mg .coin,.mg .tile.b{fill:var(--gold)}
+  .mg .hubc,.mg .node.hub,.mg .numc{fill:var(--p2)}
+  .mg .vn.b{fill:var(--gold);stroke:var(--gold)}
+  .mg .wave2,.mg .halo{stroke:var(--gold)}
+  .mg-arrow{color:var(--gold)}
+  .pager a{border-radius:14px}
+  .pager a:hover{border-color:var(--gold)}
+
+  footer.site-foot{background:var(--foot);color:var(--foot-fg);padding-block:44px 22px}
+  .ft-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px}
+  @media (max-width:760px){.ft-grid{grid-template-columns:1fr}}
+  .ft-brand{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .ft-brand .mark{width:38px;height:38px}
+  .ft-brand b{color:#fff;font-family:var(--display);font-size:1.1rem}
+  .site-foot h3{color:#fff;font-size:1rem;margin-bottom:10px}
+  .site-foot p{font-size:.93rem;line-height:1.9}
+  .ft-links{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;font-size:.92rem}
+  .ft-links a:hover{color:var(--gold)}
+  .ft-ref{margin-top:8px;color:var(--gold)}
+  .ft-bottom{margin-top:30px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font-size:.82rem;text-align:center;opacity:.85}
+  .hero .wrap.hero-in{display:grid;text-align:right}
+  @media (max-width:820px){.hero .wrap.hero-in{grid-template-columns:1fr}}
+  .ph-in>.pg-no{position:absolute;z-index:0;color:var(--gold);-webkit-text-stroke:0;opacity:.13;top:auto;bottom:-14px}
+
+  .page{display:none}
+  .page.active{display:block}
+</style>
+</head>
+<body>
+
+
+<div class="uniband"><div class="wrap ub-in"><span>جامعة الملك فيصل <i>·</i> كلية الآداب <i>·</i> قسم الإعلام</span><span class="ub-tag">مشروع عملي جماعي</span></div></div>
+<header class="topbar"><div class="wrap bar">
+  <a href="#go-home" class="brand"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><rect x="3" y="3" width="42" height="42" rx="12" class="mk-bg"/><g fill="none" stroke-width="2.6" stroke-linecap="round" class="mk-ln"><path d="M24 11v26M11 24h26M15 15l18 18M33 15L15 33"/></g><circle cx="24" cy="24" r="5" class="mk-dot"/></svg><span><b>الإعلام الجديد</b><small>جامعة الملك فيصل</small></span></a>
+  <div class="tools">
+    <button class="tool" id="fs-up" type="button" aria-label="تكبير الخط"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.5-4.5M8 10.5h5M10.5 8v5"/></svg></button>
+    <button class="tool" id="fs-down" type="button" aria-label="تصغير الخط"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.5-4.5M8 10.5h5"/></svg></button>
+    <button class="tool" id="theme-btn" type="button" aria-label="تبديل التباين"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 010 17z" fill="currentColor"/></svg></button>
+    <a class="menu-btn" href="#drawer" aria-label="فتح القائمة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></a>
+  </div>
+</div></header>
+<div class="drawer" id="drawer" role="dialog" aria-label="القائمة">
+  <div class="drawer-in">
+    <div class="drawer-top"><a class="menu-btn" href="#close" aria-label="إغلاق القائمة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div>
+    <div class="dnav"><a class="ditem" href="#go-home" aria-current="page">الرئيسية</a><details class="dgroup"><summary>عن الإعلام الجديد<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="sub"><a href="#go-intro">البدايات والمفهوم</a><a href="#go-names">التسميات والتصنيفات</a></div></details><details class="dgroup"><summary>البيئة والعوامل<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="sub"><a href="#go-environment">بيئة الإعلام الإلكتروني</a><a href="#go-factors">العوامل والمميزات</a></div></details><details class="dgroup"><summary>الوظائف والخصائص<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="sub"><a href="#go-functions">الوظائف</a><a href="#go-traits">الخصائص والسمات</a></div></details><a class="ditem" href="#go-quiz">اختبر نفسك</a><a class="ditem" href="#go-about">فريق العمل</a></div>
+  </div>
+</div>
+
+
+<div class="page active" id="p-home" data-page="go-home">
+<header class="hero"><div class="wrap hero-in">
+  <div class="hero-text">
+    <span class="hero-kicker">الوحدة التعليمية الرابعة</span>
+    <h1 class="big">الإعلام <span>الجديد</span></h1>
+    <p class="hero-lead">كيف غيّر اندماج الكمبيوتر والشبكات والوسائط المتعددة صناعة الرسالة الإعلامية، وكيف تحوّل الجمهور من متلقٍّ إلى شريك؟</p>
+    <div class="hero-actions"><a href="#go-intro" class="btn">ابدأ التصفح ←</a><a href="#go-quiz" class="btn ghost">اختبر نفسك</a></div>
+  </div>
+  <figure class="hero-visual"><svg class="mg hero-mg" viewBox="0 0 320 220" role="img" aria-label="رسم متحرك: شبكة يتبادل فيها الجميع الرسائل في الاتجاهين"><g class="edge"><line x1="50" y1="60" x2="160" y2="110"/><line x1="160" y1="30" x2="160" y2="110"/><line x1="270" y1="60" x2="160" y2="110"/><line x1="60" y1="170" x2="160" y2="110"/><line x1="170" y1="190" x2="160" y2="110"/><line x1="270" y1="160" x2="160" y2="110"/><line x1="50" y1="60" x2="160" y2="30"/><line x1="160" y1="30" x2="270" y2="60"/><line x1="270" y1="60" x2="270" y2="160"/><line x1="270" y1="160" x2="170" y2="190"/><line x1="170" y1="190" x2="60" y2="170"/><line x1="60" y1="170" x2="50" y2="60"/></g><circle class="pkt" r="4"><animateMotion dur="3.0s" begin="-0.01s" repeatCount="indefinite" path="M50,60 L160,110" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt alt" r="4"><animateMotion dur="3.5s" begin="-0.38s" repeatCount="indefinite" path="M160,30 L160,110" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt" r="4"><animateMotion dur="4.0s" begin="-0.75s" repeatCount="indefinite" path="M270,60 L160,110" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt alt" r="4"><animateMotion dur="4.5s" begin="-1.12s" repeatCount="indefinite" path="M60,170 L160,110" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt" r="4"><animateMotion dur="3.0s" begin="-1.49s" repeatCount="indefinite" path="M170,190 L160,110" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt alt" r="4"><animateMotion dur="3.5s" begin="-1.86s" repeatCount="indefinite" path="M270,160 L160,110" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt" r="4"><animateMotion dur="4.0s" begin="-2.23s" repeatCount="indefinite" path="M50,60 L160,30" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt alt" r="4"><animateMotion dur="4.5s" begin="-2.60s" repeatCount="indefinite" path="M160,30 L270,60" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt" r="4"><animateMotion dur="3.0s" begin="-2.97s" repeatCount="indefinite" path="M270,60 L270,160" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt alt" r="4"><animateMotion dur="3.5s" begin="-0.34s" repeatCount="indefinite" path="M270,160 L170,190" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt" r="4"><animateMotion dur="4.0s" begin="-0.71s" repeatCount="indefinite" path="M170,190 L60,170" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt alt" r="4"><animateMotion dur="4.5s" begin="-1.08s" repeatCount="indefinite" path="M60,170 L50,60" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="node" cx="50" cy="60" r="11"><animate attributeName="r" values="11;13;11" dur="2.4s" begin="0.0s" repeatCount="indefinite"/></circle><circle class="node" cx="160" cy="30" r="11"><animate attributeName="r" values="11;13;11" dur="2.4s" begin="0.3s" repeatCount="indefinite"/></circle><circle class="node" cx="270" cy="60" r="11"><animate attributeName="r" values="11;13;11" dur="2.4s" begin="0.6s" repeatCount="indefinite"/></circle><circle class="node" cx="60" cy="170" r="11"><animate attributeName="r" values="11;13;11" dur="2.4s" begin="0.8999999999999999s" repeatCount="indefinite"/></circle><circle class="node" cx="170" cy="190" r="11"><animate attributeName="r" values="11;13;11" dur="2.4s" begin="1.2s" repeatCount="indefinite"/></circle><circle class="node" cx="270" cy="160" r="11"><animate attributeName="r" values="11;13;11" dur="2.4s" begin="1.5s" repeatCount="indefinite"/></circle><circle class="node hub" cx="160" cy="110" r="14"><animate attributeName="r" values="14;17;14" dur="2.4s" begin="1.7999999999999998s" repeatCount="indefinite"/></circle><text x="160" y="116" text-anchor="middle" class="hub-t">@</text></svg><figcaption>كل نقطة في الشبكة ترسل وتستقبل</figcaption></figure>
+</div></header>
+
+<section class="stats"><div class="wrap st-grid">
+  <div><b>١١</b><span>محورًا من الوحدة</span></div>
+  <div><b>٩</b><span>صفحات مترابطة</span></div>
+  <div><b>٧</b><span>صفحات بموشن جرافيك</span></div>
+  <div><b>٨</b><span>أسئلة تفاعلية</span></div>
+</div></section>
+
+<section class="idea"><div class="wrap grid g2">
+  <div class="statement"><span class="eyebrow">الفكرة</span><p>موقع تعليمي يلخّص الوحدة التعليمية الرابعة «الإعلام الجديد» بأسلوب تفاعلي، من البدايات والمفهوم حتى الخصائص والسمات.</p></div>
+  <div class="statement"><span class="eyebrow">الهدف</span><p>أن يفهم الزائر كيف غيّر اندماج الكمبيوتر والشبكات والوسائط المتعددة صناعة الرسالة الإعلامية، وكيف تحوّل الجمهور من متلقٍّ إلى شريك.</p></div>
+</div></section>
+
+<section class="motion"><div class="wrap">
+  <span class="eyebrow">موشن جرافيك</span>
+  <h2>من البث في اتجاه واحد <span class="mint">إلى شبكة تفاعلية</span></h2>
+  <p class="lead">رسم متحرك يلخّص التحول الذي تشرحه الوحدة: في الإعلام التقليدي ترسل الوسيلة من مركز واحد إلى جمهور يتلقى، وفي الإعلام الجديد يتبادل الجميع الرسائل، ويصبح كل متلقٍّ مرسلًا أيضًا.</p>
+  <div class="mg-grid">
+    <figure class="mg-card"><svg class="mg" viewBox="0 0 320 220" role="img" aria-label="رسم متحرك: مصدر مركزي يرسل في اتجاه واحد إلى جمهور متلقٍّ"><g class="edge dashed"><line x1="60" y1="110" x2="250" y2="40"/><line x1="60" y1="110" x2="265" y2="110"/><line x1="60" y1="110" x2="250" y2="180"/></g><circle class="ring" cx="60" cy="110" r="14"><animate attributeName="r" values="14;90" dur="3s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0" dur="3s" begin="0s" repeatCount="indefinite"/></circle><circle class="ring" cx="60" cy="110" r="14"><animate attributeName="r" values="14;90" dur="3s" begin="1s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0" dur="3s" begin="1s" repeatCount="indefinite"/></circle><circle class="ring" cx="60" cy="110" r="14"><animate attributeName="r" values="14;90" dur="3s" begin="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0" dur="3s" begin="2s" repeatCount="indefinite"/></circle><circle class="pkt" r="5"><animateMotion dur="2.2s" begin="-0.01s" repeatCount="indefinite" path="M60,110 L250,40"/></circle><circle class="pkt" r="5"><animateMotion dur="2.2s" begin="-0.61s" repeatCount="indefinite" path="M60,110 L265,110"/></circle><circle class="pkt" r="5"><animateMotion dur="2.2s" begin="-1.21s" repeatCount="indefinite" path="M60,110 L250,180"/></circle><g class="tower"><path d="M60 92 L48 140 H72 Z"/><circle cx="60" cy="88" r="7"/></g><circle class="rcv" cx="250" cy="40" r="12"/><circle class="rcv" cx="265" cy="110" r="12"/><circle class="rcv" cx="250" cy="180" r="12"/></svg><figcaption><b>الإعلام التقليدي</b><span>مصدر مركزي، مسار خطّي، جمهور متلقٍّ</span></figcaption></figure>
+    <div class="mg-arrow" aria-hidden="true">←</div>
+    <figure class="mg-card new"><svg class="mg" viewBox="0 0 320 220" role="img" aria-label="رسم متحرك: شبكة يتبادل فيها الجميع الرسائل في الاتجاهين"><g class="edge"><line x1="50" y1="60" x2="160" y2="110"/><line x1="160" y1="30" x2="160" y2="110"/><line x1="270" y1="60" x2="160" y2="110"/><line x1="60" y1="170" x2="160" y2="110"/><line x1="170" y1="190" x2="160" y2="110"/><line x1="270" y1="160" x2="160" y2="110"/><line x1="50" y1="60" x2="160" y2="30"/><line x1="160" y1="30" x2="270" y2="60"/><line x1="270" y1="60" x2="270" y2="160"/><line x1="270" y1="160" x2="170" y2="190"/><line x1="170" y1="190" x2="60" y2="170"/><line x1="60" y1="170" x2="50" y2="60"/></g><circle class="pkt" r="4"><animateMotion dur="3.0s" begin="-0.01s" repeatCount="indefinite" path="M50,60 L160,110" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt alt" r="4"><animateMotion dur="3.5s" begin="-0.38s" repeatCount="indefinite" path="M160,30 L160,110" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt" r="4"><animateMotion dur="4.0s" begin="-0.75s" repeatCount="indefinite" path="M270,60 L160,110" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt alt" r="4"><animateMotion dur="4.5s" begin="-1.12s" repeatCount="indefinite" path="M60,170 L160,110" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt" r="4"><animateMotion dur="3.0s" begin="-1.49s" repeatCount="indefinite" path="M170,190 L160,110" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt alt" r="4"><animateMotion dur="3.5s" begin="-1.86s" repeatCount="indefinite" path="M270,160 L160,110" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt" r="4"><animateMotion dur="4.0s" begin="-2.23s" repeatCount="indefinite" path="M50,60 L160,30" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt alt" r="4"><animateMotion dur="4.5s" begin="-2.60s" repeatCount="indefinite" path="M160,30 L270,60" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt" r="4"><animateMotion dur="3.0s" begin="-2.97s" repeatCount="indefinite" path="M270,60 L270,160" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt alt" r="4"><animateMotion dur="3.5s" begin="-0.34s" repeatCount="indefinite" path="M270,160 L170,190" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt" r="4"><animateMotion dur="4.0s" begin="-0.71s" repeatCount="indefinite" path="M170,190 L60,170" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="pkt alt" r="4"><animateMotion dur="4.5s" begin="-1.08s" repeatCount="indefinite" path="M60,170 L50,60" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"/></circle><circle class="node" cx="50" cy="60" r="11"><animate attributeName="r" values="11;13;11" dur="2.4s" begin="0.0s" repeatCount="indefinite"/></circle><circle class="node" cx="160" cy="30" r="11"><animate attributeName="r" values="11;13;11" dur="2.4s" begin="0.3s" repeatCount="indefinite"/></circle><circle class="node" cx="270" cy="60" r="11"><animate attributeName="r" values="11;13;11" dur="2.4s" begin="0.6s" repeatCount="indefinite"/></circle><circle class="node" cx="60" cy="170" r="11"><animate attributeName="r" values="11;13;11" dur="2.4s" begin="0.8999999999999999s" repeatCount="indefinite"/></circle><circle class="node" cx="170" cy="190" r="11"><animate attributeName="r" values="11;13;11" dur="2.4s" begin="1.2s" repeatCount="indefinite"/></circle><circle class="node" cx="270" cy="160" r="11"><animate attributeName="r" values="11;13;11" dur="2.4s" begin="1.5s" repeatCount="indefinite"/></circle><circle class="node hub" cx="160" cy="110" r="14"><animate attributeName="r" values="14;17;14" dur="2.4s" begin="1.7999999999999998s" repeatCount="indefinite"/></circle><text x="160" y="116" text-anchor="middle" class="hub-t">@</text></svg><figcaption><b>الإعلام الجديد</b><span>شبكة لا مركزية، تفاعل في الاتجاهين، جمهور مشارك</span></figcaption></figure>
+  </div>
+</div></section>
+
+<section class="home-sec"><div class="wrap">
+  <span class="eyebrow">محتوى الموقع</span>
+  <h2>استكشف الإعلام الجديد</h2>
+  <p class="lead">موقع تعليمي يلخّص الوحدة التعليمية الرابعة «الإعلام الجديد»، مقسّم إلى صفحات تتنقل بينها بحرية من القائمة.</p>
+  <div class="grid g3">
+    <a class="card topic" href="#go-intro"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"></path></svg></div><h3>1. البدايات والمفهوم</h3><p>كيف بدأ الإعلام الجديد، وما مفهومه وتعريفاته؟</p><span class="more">اقرأ المزيد ←</span></a>
+    <a class="card topic" href="#go-names"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h3M20 7V4h-3M4 17v3h3M20 17v3h-3"></path><path d="M9 9h1v6M14 9h2v6h-2z"></path></svg></div><h3>2. التسميات والتصنيفات</h3><p>الأسماء المتعددة للإعلام الجديد وأنواعه الثلاثة.</p><span class="more">اقرأ المزيد ←</span></a>
+    <a class="card topic" href="#go-environment"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg></div><h3>3. بيئة الإعلام الإلكتروني</h3><p>من النموذج الخطي إلى بيئة متعددة المسارات.</p><span class="more">اقرأ المزيد ←</span></a>
+    <a class="card topic" href="#go-factors"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"></path></svg></div><h3>4. العوامل والمميزات</h3><p>لماذا ظهر الإعلام الجديد، وبماذا يتميز؟</p><span class="more">اقرأ المزيد ←</span></a>
+    <a class="card topic" href="#go-functions"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg></div><h3>5. الوظائف</h3><p>وظائف الإعلام من شرام إلى الإعلام المعاصر.</p><span class="more">اقرأ المزيد ←</span></a>
+    <a class="card topic" href="#go-traits"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"></rect><rect x="13" y="3" width="8" height="8" rx="1"></rect><rect x="3" y="13" width="8" height="8" rx="1"></rect><path d="M15 15l5 2.5-5 2.5z"></path></svg></div><h3>6. الخصائص والسمات</h3><p>من الآلات التماثلية إلى الوسائل الرقمية الذكية.</p><span class="more">اقرأ المزيد ←</span></a>
+    <a class="card topic" href="#go-quiz"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h3>7. اختبر نفسك</h3><p>ثمانية أسئلة سريعة من محتوى الموقع.</p><span class="more">اقرأ المزيد ←</span></a>
+  </div>
+</div></section>
+</div>
+
+<div class="page" id="p-intro" data-page="go-intro">
+<header class="page-head"><div class="wrap ph-in">
+  <span class="pg-no" aria-hidden="true">٠١</span>
+  <svg class="deco" viewBox="0 0 420 420" aria-hidden="true"><defs><linearGradient id="dg" x1="1" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--p);stop-opacity:.45"/><stop offset="1" style="stop-color:var(--p);stop-opacity:0"/></linearGradient></defs><g fill="none" stroke="url(#dg)" stroke-width="5" stroke-linejoin="round"><path d="M190 20H300L120 400H10z"/><path d="M300 120H410L230 500H120z"/></g></svg>
+  <div class="crumb"><a href="#go-home">الرئيسية</a> <i>/</i> عن الإعلام الجديد <i>/</i> البدايات والمفهوم</div>
+  <h1 class="big">البدايات <span>والمفهوم</span></h1>
+  <p class="ph-desc">كيف بدأ الإعلام الجديد، وما مفهومه وتعريفاته؟</p>
+</div></header>
+<section class="banner"><div class="wrap"><figure class="mg-banner"><svg class="mg" viewBox="0 0 640 260" role="img" aria-label="رسم متحرك: الصحيفة والإذاعة والتلفزيون والصورة تندمج في جهاز رقمي واحد"><g class="edge dashed"><line x1="100" y1="70" x2="320" y2="130"/><line x1="100" y1="195" x2="320" y2="130"/><line x1="540" y1="70" x2="320" y2="130"/><line x1="540" y1="195" x2="320" y2="130"/></g><g transform="translate(320 130)"><rect x="-44" y="-76" width="88" height="152" rx="16" class="dev"/><rect x="-34" y="-60" width="68" height="112" rx="6" class="scr"/><rect x="-26" y="-50" width="24" height="20" rx="3" class="tile"/><rect x="2" y="-50" width="24" height="20" rx="3" class="tile b"/><rect x="-26" y="-24" width="52" height="28" rx="3" class="tile c"/><path d="M-26 14H26M-26 24H12M-26 34H18" class="ln lt"/><circle class="halo" r="60"/></g><g transform="translate(100 70)"><g class="conv" style="--dx:180px;--dy:60px"><rect x="-34" y="-26" width="68" height="52" rx="5" class="ic"/><path d="M-24 -14H24M-24 -4H24M-24 6H8M-24 16H8" class="ln"/></g><text x="0" y="52" text-anchor="middle" class="t m" style="font-size:13px;font-weight:500">الصحيفة</text></g><g transform="translate(100 195)"><g class="conv" style="--dx:180px;--dy:-65px"><rect x="-34" y="-20" width="68" height="44" rx="7" class="ic"/><circle cx="-12" cy="2" r="11" class="ln"/><path d="M8 -6H24M8 4H24M8 14H24M-20 -20L10 -36" class="ln"/></g><text x="0" y="52" text-anchor="middle" class="t m" style="font-size:13px;font-weight:500">الإذاعة</text></g><g transform="translate(540 70)"><g class="conv" style="--dx:-180px;--dy:60px"><rect x="-34" y="-26" width="68" height="44" rx="5" class="ic"/><path d="M-12 26L-20 34M12 26L20 34M-26 -18H26V10H-26Z" class="ln"/></g><text x="0" y="52" text-anchor="middle" class="t m" style="font-size:13px;font-weight:500">التلفزيون</text></g><g transform="translate(540 195)"><g class="conv" style="--dx:-180px;--dy:-65px"><rect x="-34" y="-20" width="68" height="44" rx="7" class="ic"/><circle cx="0" cy="2" r="13" class="ln"/><rect x="-14" y="-28" width="22" height="9" rx="2" class="ic"/></g><text x="0" y="52" text-anchor="middle" class="t m" style="font-size:13px;font-weight:500">الصورة</text></g></svg><figcaption><span class="eyebrow">موشن جرافيك</span>الاندماج: الوسائل التقليدية (الصحيفة، الإذاعة، التلفزيون، الصورة) تلتقي في وسيط رقمي واحد تفاعلي.</figcaption></figure></div></section>
+
+
+
+<section id="intro"><div class="wrap">
+  <span class="eyebrow">أولًا</span>
+  <h2>بدايات الإعلام الجديد</h2>
+  <p class="lead">ظهر «الإعلام الجديد» مصطلحًا واسع النطاق في الجزء الأخير من القرن العشرين، ليشمل دمج وسائل الإعلام التقليدية (الأفلام، الصور، الموسيقى، الكلمة المنطوقة والمطبوعة) مع القدرة التفاعلية للكمبيوتر وتكنولوجيا الاتصالات.</p>
+  <div class="grid g3">
+    <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"></path></svg></div>
+      <h3>تجاوز الحدود</h3><p>ساعدت الثورة التكنولوجية على التغلب على الحيّز الجغرافي والحدود السياسية، وأحدثت تغييرًا بنيويًا في كمّ وكيف وسائل الإعلام.</p></div>
+    <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg></div>
+      <h3>كسر المركزية</h3><p>جاء ليحلّ محل سيطرة وسائل الإعلام التقليدية المركزية؛ فأصبح بإمكان الأفراد والمؤسسات مخاطبة الجميع مباشرةً وبتكلفة معقولة.</p></div>
+    <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg></div>
+      <h3>تبادل الأدوار</h3><p>لا تقتصر قوته على التفاعل الذي يسمح للمرسل والمستقبل بتبادل الأدوار، بل أحدث ثورة نوعية في المحتوى متعدد الوسائط: نص وصورة وصوت وفيديو.</p></div>
+  </div>
+</div></section>
+
+<section id="concept"><div class="wrap">
+  <span class="eyebrow">ثانيًا وثالثًا</span>
+  <h2>مفهوم الإعلام الجديد وتعريفاته</h2>
+  <p class="lead">الإعلام الجديد هو «إعلام عصر المعلومات»، وُلد من تزاوج ظاهرتين: <strong>تفجّر المعلومات</strong> (Information Explosion) و<strong>الاتصالات عن بُعد</strong> (Telecommunication). وأبرز ما أضافه ولا يوفّره الإعلام القديم هو <strong>التفاعل</strong> (Interactivity).</p>
+
+  <div class="equation" aria-label="الكمبيوتر + الشبكات + الوسائط المتعددة = الإعلام الجديد">
+    <div class="eq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>الكمبيوتر</div>
+    <span class="eq-op">+</span>
+    <div class="eq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"></circle><circle cx="5" cy="19" r="2"></circle><circle cx="19" cy="19" r="2"></circle><path d="M12 7v5M12 12l-6 5M12 12l6 5"></path></svg>الشبكات</div>
+    <span class="eq-op">+</span>
+    <div class="eq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M10 8l6 4-6 4z"></path></svg>الوسائط المتعددة</div>
+    <span class="eq-op">=</span>
+    <div class="eq-item eq-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><circle cx="4" cy="5" r="2"></circle><circle cx="20" cy="5" r="2"></circle><circle cx="4" cy="19" r="2"></circle><circle cx="20" cy="19" r="2"></circle><path d="M6 6l4 4M18 6l-4 4M6 18l4-4M18 18l-4-4"></path></svg>الإعلام الجديد</div>
+  </div>
+
+  <h3 style="margin-bottom:12px">تعريفات الإعلام الجديد — اختر تعريفًا:</h3>
+  <div class="tabs" role="tablist" id="def-tabs"><button class="tab" role="tab" data-i="0" aria-selected="true">1. اندماج ثلاثة عناصر</button><button class="tab" role="tab" data-i="1" aria-selected="false">2. الحاسب الآلي</button><button class="tab" role="tab" data-i="2" aria-selected="false">3. الرقمي التفاعلي</button><button class="tab" role="tab" data-i="3" aria-selected="false">4. التزاوج</button><button class="tab" role="tab" data-i="4" aria-selected="false">5. جونز (Jones)</button></div>
+  <div class="panel" id="def-panel" role="tabpanel"><p>العملية الاتصالية الناتجة من اندماج ثلاثة عناصر: <strong>الكمبيوتر، والشبكات، والوسائط المتعددة</strong>.</p></div>
+</div></section>
+<div class="wrap pager"><a href="#go-home"><small>→ السابق</small><b>الرئيسية</b></a><a class="next" href="#go-names"><small>التالي ←</small><b>التسميات والتصنيفات</b></a></div>
+</div>
+
+<div class="page" id="p-names" data-page="go-names">
+<header class="page-head"><div class="wrap ph-in">
+  <span class="pg-no" aria-hidden="true">٠٢</span>
+  <svg class="deco" viewBox="0 0 420 420" aria-hidden="true"><defs><linearGradient id="dg" x1="1" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--p);stop-opacity:.45"/><stop offset="1" style="stop-color:var(--p);stop-opacity:0"/></linearGradient></defs><g fill="none" stroke="url(#dg)" stroke-width="5" stroke-linejoin="round"><path d="M190 20H300L120 400H10z"/><path d="M300 120H410L230 500H120z"/></g></svg>
+  <div class="crumb"><a href="#go-home">الرئيسية</a> <i>/</i> عن الإعلام الجديد <i>/</i> التسميات والتصنيفات</div>
+  <h1 class="big">التسميات <span>والتصنيفات</span></h1>
+  <p class="ph-desc">الأسماء المتعددة للإعلام الجديد وأنواعه الثلاثة.</p>
+</div></header>
+<section class="banner"><div class="wrap"><figure class="mg-banner"><svg class="mg" viewBox="0 0 640 280" role="img" aria-label="رسم متحرك: أربع تسميات تدور حول الإعلام الجديد"><circle cx="320" cy="140" r="118" class="ring2"/><circle cx="320" cy="140" r="68" class="ring2 dim"/><circle cx="320" cy="140" r="46" class="hubc"/><text x="320" y="137" text-anchor="middle" class="t on" style="font-size:15px;font-weight:700">الإعلام</text><text x="320" y="156" text-anchor="middle" class="t on" style="font-size:15px;font-weight:700">الجديد</text><g><animateTransform attributeName="transform" type="rotate" from="0 320 140" to="360 320 140" dur="28s" repeatCount="indefinite"/><g><animateTransform attributeName="transform" type="rotate" from="0 320.0 22.0" to="-360 320.0 22.0" dur="28s" repeatCount="indefinite"/><rect x="262.8" y="6.0" width="114.4" height="32" rx="16" class="pill"/><text x="320.0" y="27.0" text-anchor="middle" class="t" style="font-size:12px;font-weight:600">الإعلام الرقمي</text></g><g><animateTransform attributeName="transform" type="rotate" from="0 438.0 140.0" to="-360 438.0 140.0" dur="28s" repeatCount="indefinite"/><rect x="374.2" y="124.0" width="127.6" height="32" rx="16" class="pill"/><text x="438.0" y="145.0" text-anchor="middle" class="t" style="font-size:12px;font-weight:600">الإعلام التفاعلي</text></g><g><animateTransform attributeName="transform" type="rotate" from="0 320.0 258.0" to="-360 320.0 258.0" dur="28s" repeatCount="indefinite"/><rect x="259.5" y="242.0" width="121.0" height="32" rx="16" class="pill"/><text x="320.0" y="263.0" text-anchor="middle" class="t" style="font-size:12px;font-weight:600">إعلام المعلومات</text></g><g><animateTransform attributeName="transform" type="rotate" from="0 202.0 140.0" to="-360 202.0 140.0" dur="28s" repeatCount="indefinite"/><rect x="118.4" y="124.0" width="167.2" height="32" rx="16" class="pill"/><text x="202.0" y="145.0" text-anchor="middle" class="t" style="font-size:12px;font-weight:600">إعلام الوسائط المتعددة</text></g></g></svg><figcaption><span class="eyebrow">موشن جرافيك</span>أربع تسميات لظاهرة واحدة: كل اسم يبرز جانبًا من الإعلام الجديد، ولم تتبلور خصائصه النهائية بعد.</figcaption></figure></div></section>
+
+
+
+<section id="names"><div class="wrap">
+  <span class="eyebrow">رابعًا</span>
+  <h2>تسميات الإعلام الجديد</h2>
+  <p class="lead">تعددت أسماء الإعلام الجديد لأن خصائصه النهائية لم تتبلور بعد، ومن أبرز تسمياته:</p>
+  <div class="grid g4">
+    <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h3M20 7V4h-3M4 17v3h3M20 17v3h-3"></path><path d="M9 9h1v6M14 9h2v6h-2z"></path></svg></div>
+      <h3>الإعلام الرقمي</h3><p>أساليب وأنشطة رقمية لإنتاج المحتوى ونشره وتلقيه عبر الأجهزة الإلكترونية، ويتميز بتحكّم انتقائي للجمهور؛ فيصبح الفرد «رئيس تحرير» ما يختاره.</p></div>
+    <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16l-4-4 4-4M17 8l4 4-4 4M14 4l-4 16"></path></svg></div>
+      <h3>الإعلام التفاعلي</h3><p>حالة من العطاء والاستجابة بين المستخدمين لشبكة الإنترنت والتلفزيون والراديو التفاعليين وغيرها من النظم التفاعلية.</p></div>
+    <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01M11 12h1v4h1"></path></svg></div>
+      <h3>إعلام المعلومات</h3><p>للدلالة على التزاوج بين الكمبيوتر والاتصال، وظهور نظام إعلامي يستفيد من تطور تكنولوجيا المعلوماتية ويندمج فيها.</p></div>
+    <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"></rect><rect x="13" y="3" width="8" height="8" rx="1"></rect><rect x="3" y="13" width="8" height="8" rx="1"></rect><path d="M15 15l5 2.5-5 2.5z"></path></svg></div>
+      <h3>إعلام الوسائط المتعددة</h3><p>حالة الاندماج التي تحدث بين النص والصورة والفيديو.</p></div>
+  </div>
+</div></section>
+
+<section id="types"><div class="wrap">
+  <span class="eyebrow">خامسًا</span>
+  <h2>تصنيفات الإعلام الجديد</h2>
+  <p class="lead">صنّف ريتشارد ديفيس (Richard Davis) وديانا أوين (Diana Owen) في كتابهما «الإعلام الجديد والسياسة الأمريكية» الإعلام الجديد إلى ثلاثة أنواع:</p>
+  <div class="grid g3">
+    <div class="card" style="border-top:5px solid #94a3b8">
+      <h3>📻 بتكنولوجيا قديمة</h3><p>أشكال صحفية في الإذاعة والتلفزيون والصحف، مثل برامج الحوار الإذاعية والتلفزيونية (Talk Show) التي تعود إلى ثلاثينيات القرن الماضي؛ إذ استخدم الرئيس روزفلت الإذاعة أداةً سياسية للحديث إلى الناس.</p></div>
+    <div class="card" style="border-top:5px solid var(--p)">
+      <h3>💻 بتكنولوجيا جديدة</h3><p>الوسائل التي تعمل على منصة الكمبيوتر، وعلى رأسها الإنترنت والبريد الإلكتروني؛ مكّنت من التبادل الحي والسريع للمعلومات والتواصل بين الطرفين، وتجاوزت العوائق المكانية والزمانية والحدود بين الدول.</p></div>
+    <div class="card" style="border-top:5px solid var(--a)">
+      <h3>🔀 بتكنولوجيا مختلطة</h3><p>تزول الفوارق بين القديم والجديد، ويستخدم الإعلاميون النوعين معًا؛ فصحف كبرى مثل واشنطن بوست ونيويورك تايمز لديها مواقع ضخمة على الإنترنت، وتتواصل برامج التلفزيون مع جمهورها بأدوات الإعلام الجديد.</p></div>
+  </div>
+</div></section>
+<div class="wrap pager"><a href="#go-intro"><small>→ السابق</small><b>البدايات والمفهوم</b></a><a class="next" href="#go-environment"><small>التالي ←</small><b>بيئة الإعلام الإلكتروني</b></a></div>
+</div>
+
+<div class="page" id="p-environment" data-page="go-environment">
+<header class="page-head"><div class="wrap ph-in">
+  <span class="pg-no" aria-hidden="true">٠٣</span>
+  <svg class="deco" viewBox="0 0 420 420" aria-hidden="true"><defs><linearGradient id="dg" x1="1" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--p);stop-opacity:.45"/><stop offset="1" style="stop-color:var(--p);stop-opacity:0"/></linearGradient></defs><g fill="none" stroke="url(#dg)" stroke-width="5" stroke-linejoin="round"><path d="M190 20H300L120 400H10z"/><path d="M300 120H410L230 500H120z"/></g></svg>
+  <div class="crumb"><a href="#go-home">الرئيسية</a> <i>/</i> البيئة والعوامل <i>/</i> بيئة الإعلام الإلكتروني</div>
+  <h1 class="big">بيئة <span>الإعلام الإلكتروني</span></h1>
+  <p class="ph-desc">من النموذج الخطي إلى بيئة متعددة المسارات.</p>
+</div></header>
+<section class="banner"><div class="wrap"><figure class="mg-banner"><svg class="mg" viewBox="0 0 640 260" role="img" aria-label="رسم متحرك: الخبر يمر بالمراحل الأربع ثم يعود من الجمهور تفاعلًا"><path d="M540 80H90" class="edge-l"/><path id="fb" d="M90 112 Q315 250 540 112" class="edge-l dashed2"/><circle r="7" class="pkt"><animateMotion dur="3s" repeatCount="indefinite" path="M540 80H90" begin="-0.4s"/></circle><g class="stg" style="animation-delay:0.0s"><rect x="478" y="52" width="124" height="56" rx="12" class="box"/><circle cx="590" cy="52" r="11" class="numc"/><text x="590" y="57" text-anchor="middle" class="t on" style="font-size:12px;font-weight:700">١</text><text x="540" y="86" text-anchor="middle" class="t" style="font-size:14px;font-weight:600">ساحة الأحداث</text></g><g class="stg" style="animation-delay:0.75s"><rect x="328" y="52" width="124" height="56" rx="12" class="box"/><circle cx="440" cy="52" r="11" class="numc"/><text x="440" y="57" text-anchor="middle" class="t on" style="font-size:12px;font-weight:700">٢</text><text x="390" y="86" text-anchor="middle" class="t" style="font-size:14px;font-weight:600">جهة الاتصال</text></g><g class="stg" style="animation-delay:1.5s"><rect x="178" y="52" width="124" height="56" rx="12" class="box"/><circle cx="290" cy="52" r="11" class="numc"/><text x="290" y="57" text-anchor="middle" class="t on" style="font-size:12px;font-weight:700">٣</text><text x="240" y="86" text-anchor="middle" class="t" style="font-size:14px;font-weight:600">وسيلة الاتصال</text></g><g class="stg" style="animation-delay:2.25s"><rect x="28" y="52" width="124" height="56" rx="12" class="box"/><circle cx="140" cy="52" r="11" class="numc"/><text x="140" y="57" text-anchor="middle" class="t on" style="font-size:12px;font-weight:700">٤</text><text x="90" y="86" text-anchor="middle" class="t" style="font-size:14px;font-weight:600">الجمهور</text></g><circle r="6" class="pkt alt"><animateMotion dur="3s" repeatCount="indefinite" path="M90 112 Q315 250 540 112" begin="-1.9s"/></circle><text x="315" y="236" text-anchor="middle" class="t m" style="font-size:13px;font-weight:500">تعليق، رأي، مشاركة: الجمهور يعيد الرسالة إلى المصدر</text></svg><figcaption><span class="eyebrow">موشن جرافيك</span>لم يعد الخبر يتوقف عند الجمهور: يعود منه تعليقًا ورأيًا ومشاركة، وقد يصبح الجمهور نفسه صانعًا للخبر.</figcaption></figure></div></section>
+
+
+
+<section id="env"><div class="wrap">
+  <span class="eyebrow">سادسًا</span>
+  <h2>بيئة الإعلام الإلكتروني الجديد</h2>
+  <p class="lead">تحوّلت بيئة العمل الإعلامي من نموذج خطّي ينتقل فيه المحتوى من نقطة إلى نقطة، إلى مسار متنوّع قائم على التعدد والبدائل والسهولة.</p>
+  <div class="compare">
+    <div class="card"><h3>النموذج الخطّي (القديم)</h3>
+      <div class="flow one"><span>المرسل</span><b>←</b><span>الوسيلة</span><b>←</b><span>جمهور يتلقى بسلبية</span></div></div>
+    <div class="card" style="border-color:var(--p)"><h3>البيئة الجديدة</h3>
+      <div class="flow two"><span>مصادر متعددة</span><b>⇄</b><span>قنوات متنوعة</span><b>⇄</b><span>جمهور يتفاعل ويصنع الخبر</span></div></div>
+  </div>
+  <h3 style="margin-bottom:12px">المراحل الأربع — اضغط على كل مرحلة:</h3>
+  <div class="stages" id="stages"><button class="stage" data-i="0" aria-pressed="true"><span class="n">1</span><b>ساحة الأحداث</b></button><button class="stage" data-i="1" aria-pressed="false"><span class="n">2</span><b>جهة الاتصال</b></button><button class="stage" data-i="2" aria-pressed="false"><span class="n">3</span><b>وسيلة الاتصال</b></button><button class="stage" data-i="3" aria-pressed="false"><span class="n">4</span><b>الجمهور المتلقي</b></button></div>
+  <div class="panel stage-detail" id="stage-detail" aria-live="polite"><h3>المرحلة الأولى: ساحة الأحداث</h3><p class="muted">ساحة الأحداث ومصادر المعلومات: لم يعد فيها الصحفيون المحترفون وحدهم، بل صحفيون هواة ومستقلون وغير محترفين بانتماءات وأهداف مختلفة، جاهزون لنقل الأخبار في التوّ واللحظة.</p></div>
+</div></section>
+<div class="wrap pager"><a href="#go-names"><small>→ السابق</small><b>التسميات والتصنيفات</b></a><a class="next" href="#go-factors"><small>التالي ←</small><b>العوامل والمميزات</b></a></div>
+</div>
+
+<div class="page" id="p-factors" data-page="go-factors">
+<header class="page-head"><div class="wrap ph-in">
+  <span class="pg-no" aria-hidden="true">٠٤</span>
+  <svg class="deco" viewBox="0 0 420 420" aria-hidden="true"><defs><linearGradient id="dg" x1="1" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--p);stop-opacity:.45"/><stop offset="1" style="stop-color:var(--p);stop-opacity:0"/></linearGradient></defs><g fill="none" stroke="url(#dg)" stroke-width="5" stroke-linejoin="round"><path d="M190 20H300L120 400H10z"/><path d="M300 120H410L230 500H120z"/></g></svg>
+  <div class="crumb"><a href="#go-home">الرئيسية</a> <i>/</i> البيئة والعوامل <i>/</i> العوامل والمميزات</div>
+  <h1 class="big">العوامل <span>والمميزات</span></h1>
+  <p class="ph-desc">لماذا ظهر الإعلام الجديد، وبماذا يتميز؟</p>
+</div></header>
+<section class="banner"><div class="wrap"><figure class="mg-banner"><svg class="mg" viewBox="0 0 640 260" role="img" aria-label="رسم متحرك: ترس للعامل التقني، كرة أرضية تدور حولها عملة للعامل الاقتصادي، مكبر صوت للعامل السياسي"><g><animateTransform attributeName="transform" type="rotate" from="0 520 105" to="360 520 105" dur="8s" repeatCount="indefinite"/><circle cx="520" cy="105" r="40" class="gear" style="stroke-dasharray:16.8 12.8"/><circle cx="520" cy="105" r="18.0" class="gear-in"/></g><g><animateTransform attributeName="transform" type="rotate" from="0 575 150" to="-360 575 150" dur="4.8s" repeatCount="indefinite"/><circle cx="575" cy="150" r="24" class="gear" style="stroke-dasharray:10.1 7.7"/><circle cx="575" cy="150" r="10.8" class="gear-in"/></g><circle cx="320" cy="115" r="52" class="globe"/><ellipse cx="320" cy="115" rx="22" ry="52" class="ln"/><path d="M268 115H372M276 88H364M276 142H364" class="ln"/><ellipse cx="320" cy="115" rx="84" ry="26" class="ring2 dim"/><g><animateMotion dur="5s" repeatCount="indefinite" path="M404 115 A84 26 0 1 1 236 115 A84 26 0 1 1 404 115"/><circle r="13" class="coin"/><text x="0" y="5" text-anchor="middle" class="t on" style="font-size:14px;font-weight:700">$</text></g><g transform="translate(120 115)"><path d="M-40 -14H-18L22 -40V40L-18 14H-40Z" class="mega"/><path d="M-30 14L-24 44H-12L-16 14" class="mega"/><path d="M33 -16 Q54 0 33 16" class="wave2" style="animation-delay:0.0s"/><path d="M36 -30 Q68 0 36 30" class="wave2" style="animation-delay:0.35s"/><path d="M39 -44 Q82 0 39 44" class="wave2" style="animation-delay:0.7s"/></g><text x="545" y="225" text-anchor="middle" class="t" style="font-size:14px;font-weight:700">العامل التقني</text><text x="320" y="225" text-anchor="middle" class="t" style="font-size:14px;font-weight:700">العامل الاقتصادي</text><text x="120" y="225" text-anchor="middle" class="t" style="font-size:14px;font-weight:700">العامل السياسي</text></svg><figcaption><span class="eyebrow">موشن جرافيك</span>ثلاثة عوامل تداخلت بصورة غير مسبوقة: تقدم التقنية، وعولمة الاقتصاد، وتوظيف القوى السياسية للإعلام.</figcaption></figure></div></section>
+
+
+
+<section id="factors"><div class="wrap">
+  <span class="eyebrow">سابعًا</span>
+  <h2>العوامل الرئيسية وراء ظهور الإعلام الجديد</h2>
+  <p class="lead">تداخلت ثلاثة عوامل بصورة غير مسبوقة، فجعلت من الإعلام الجديد قضية شائكة وساحة ساخنة للصراعات العالمية والإقليمية والمحلية.</p>
+  <div class="grid g3">
+    <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"></path></svg></div>
+      <h3>العامل التقني</h3><p>التقدم الهائل في الكمبيوتر وتكنولوجيا الاتصالات والأقمار الصناعية والألياف الضوئية، الذي أفرز الإنترنت وسيطًا يطوي بداخله جميع وسائل الاتصال، فانكمش العالم مكانًا وزمانًا.</p></div>
+    <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg></div>
+      <h3>العامل الاقتصادي</h3><p>عولمة الاقتصاد وما تتطلبه من إسراع حركة السلع ورؤوس الأموال وتدفق المعلومات؛ فالمعلومات أصبحت سلعة اقتصادية في حد ذاتها تتعاظم أهميتها يومًا بعد يوم.</p></div>
+    <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10M19 21V10M9 21V10M15 21V10M12 3l9 5H3z"></path></svg></div>
+      <h3>العامل السياسي</h3><p>الاستخدام المتزايد لوسائل الإعلام من قبل القوى السياسية بهدف إحكام قبضتها على سير الأمور والمحافظة على استقرار موازين القوى.</p></div>
+  </div>
+  <div class="card" style="margin-top:16px;background:var(--a-soft);border-color:var(--note-line)">
+    <h3>💡 مثال: ظاهرة المدونات</h3>
+    <p style="color:var(--note-fg)">أثارت المدونات جدلًا مستمرًا: فريق يراها «صحافة بديلة» ومنفذًا جديدًا للتعبير الحر دون رقابة، وفريق يخشى أن تكون سببًا في التفتيت وإثارة النعرات الطائفية.</p>
+  </div>
+</div></section>
+
+<section id="features"><div class="wrap">
+  <span class="eyebrow">ثامنًا</span>
+  <h2>مميزات الإعلام الجديد</h2>
+  <p class="lead">ثمانية ملامح تميّز الإعلام الجديد عن غيره:</p>
+  <ol class="num-list">
+    <li><span><strong>مستخدم نشط:</strong> يتطلب درجة عالية من الانتباه؛ فالمستخدم يختار بفاعلية (active) المحتوى الذي يريده.</span></li>
+    <li><span><strong>اندماج الوسائل:</strong> ألغى الحدود الفاصلة بين وسائل كانت مستقلة لا علاقة لكلٍّ منها بالأخرى.</span></li>
+    <li><span><strong>حرية الإعلام:</strong> صار بإمكان أي شخص لديه اتصال بالإنترنت أن يصبح ناشرًا ويوصل رسالته للعالم بتكلفة لا تُذكر.</span></li>
+    <li><span><strong>تعدد الوسائط:</strong> مزيج من النص والصورة والصوت والفيديو، انتشر خصوصًا عبر «صحافة المواطن».</span></li>
+    <li><span><strong>تفتيت الجماهير:</strong> تعدد الخيارات وتوزّع وقت الجمهور بين المواقع والشبكات والهواتف والألعاب إلى جانب الوسائل التقليدية.</span></li>
+    <li><span><strong>غياب التزامنية:</strong> لا حاجة لوجود المرسل والمتلقي في الوقت نفسه؛ فالمتلقي يحصل على المحتوى متى شاء.</span></li>
+    <li><span><strong>الانتشار وعالمية الوصول:</strong> يصل إلى جميع شرائح المجتمع تقريبًا ويتجاوز الحدود الجغرافية.</span></li>
+    <li><span><strong>قابلية التواصل:</strong> بصرف النظر عن مواصفات ومقاييس مُنشئ المحتوى.</span></li>
+  </ol>
+</div></section>
+<div class="wrap pager"><a href="#go-environment"><small>→ السابق</small><b>بيئة الإعلام الإلكتروني</b></a><a class="next" href="#go-functions"><small>التالي ←</small><b>الوظائف</b></a></div>
+</div>
+
+<div class="page" id="p-functions" data-page="go-functions">
+<header class="page-head"><div class="wrap ph-in">
+  <span class="pg-no" aria-hidden="true">٠٥</span>
+  <svg class="deco" viewBox="0 0 420 420" aria-hidden="true"><defs><linearGradient id="dg" x1="1" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--p);stop-opacity:.45"/><stop offset="1" style="stop-color:var(--p);stop-opacity:0"/></linearGradient></defs><g fill="none" stroke="url(#dg)" stroke-width="5" stroke-linejoin="round"><path d="M190 20H300L120 400H10z"/><path d="M300 120H410L230 500H120z"/></g></svg>
+  <div class="crumb"><a href="#go-home">الرئيسية</a> <i>/</i> الوظائف والخصائص <i>/</i> الوظائف</div>
+  <h1 class="big">وظائف <span>الإعلام الجديد</span></h1>
+  <p class="ph-desc">وظائف الإعلام من شرام إلى الإعلام المعاصر.</p>
+</div></header>
+<section class="banner"><div class="wrap"><figure class="mg-banner"><svg class="mg" viewBox="0 0 640 260" role="img" aria-label="رسم متحرك: شاشة هاتف يتدفق فيها محتوى يمثل وظائف الإعلام الجديد"><defs><clipPath id="scrclip"><rect x="262" y="34" width="116" height="192" rx="8"/></clipPath></defs><rect x="250" y="14" width="140" height="232" rx="24" class="dev"/><rect x="262" y="34" width="116" height="192" rx="8" class="scr"/><g clip-path="url(#scrclip)"><g class="feed"><rect x="268" y="40" width="104" height="44" rx="8" class="fcard"/><circle cx="356" cy="62" r="9" class="fdot"/><text x="312" y="59" text-anchor="middle" class="t" style="font-size:11px;font-weight:700">خبر عاجل</text><text x="312" y="74" text-anchor="middle" class="t m" style="font-size:9.5px;font-weight:500">فورية الإعلام</text><rect x="268" y="92" width="104" height="44" rx="8" class="fcard b"/><circle cx="356" cy="114" r="9" class="fdot b"/><text x="312" y="111" text-anchor="middle" class="t" style="font-size:11px;font-weight:700">درس عن بُعد</text><text x="312" y="126" text-anchor="middle" class="t m" style="font-size:9.5px;font-weight:500">التعليم</text><rect x="268" y="144" width="104" height="44" rx="8" class="fcard"/><circle cx="356" cy="166" r="9" class="fdot"/><text x="312" y="163" text-anchor="middle" class="t" style="font-size:11px;font-weight:700">عرض جديد</text><text x="312" y="178" text-anchor="middle" class="t m" style="font-size:9.5px;font-weight:500">التسويق والإعلان</text><rect x="268" y="196" width="104" height="44" rx="8" class="fcard b"/><circle cx="356" cy="218" r="9" class="fdot b"/><text x="312" y="215" text-anchor="middle" class="t" style="font-size:11px;font-weight:700">مسابقة اليوم</text><text x="312" y="230" text-anchor="middle" class="t m" style="font-size:9.5px;font-weight:500">التسلية والترفيه</text><rect x="268" y="248" width="104" height="44" rx="8" class="fcard"/><circle cx="356" cy="270" r="9" class="fdot"/><text x="312" y="267" text-anchor="middle" class="t" style="font-size:11px;font-weight:700">محادثة</text><text x="312" y="282" text-anchor="middle" class="t m" style="font-size:9.5px;font-weight:500">تجاوز العزلة</text><rect x="268" y="300" width="104" height="44" rx="8" class="fcard b"/><circle cx="356" cy="322" r="9" class="fdot b"/><text x="312" y="319" text-anchor="middle" class="t" style="font-size:11px;font-weight:700">حملة رأي</text><text x="312" y="334" text-anchor="middle" class="t m" style="font-size:9.5px;font-weight:500">التعبئة</text><rect x="268" y="352" width="104" height="44" rx="8" class="fcard"/><circle cx="356" cy="374" r="9" class="fdot"/><text x="312" y="371" text-anchor="middle" class="t" style="font-size:11px;font-weight:700">خبر عاجل</text><text x="312" y="386" text-anchor="middle" class="t m" style="font-size:9.5px;font-weight:500">فورية الإعلام</text><rect x="268" y="404" width="104" height="44" rx="8" class="fcard b"/><circle cx="356" cy="426" r="9" class="fdot b"/><text x="312" y="423" text-anchor="middle" class="t" style="font-size:11px;font-weight:700">درس عن بُعد</text><text x="312" y="438" text-anchor="middle" class="t m" style="font-size:9.5px;font-weight:500">التعليم</text><rect x="268" y="456" width="104" height="44" rx="8" class="fcard"/><circle cx="356" cy="478" r="9" class="fdot"/><text x="312" y="475" text-anchor="middle" class="t" style="font-size:11px;font-weight:700">عرض جديد</text><text x="312" y="490" text-anchor="middle" class="t m" style="font-size:9.5px;font-weight:500">التسويق والإعلان</text><rect x="268" y="508" width="104" height="44" rx="8" class="fcard b"/><circle cx="356" cy="530" r="9" class="fdot b"/><text x="312" y="527" text-anchor="middle" class="t" style="font-size:11px;font-weight:700">مسابقة اليوم</text><text x="312" y="542" text-anchor="middle" class="t m" style="font-size:9.5px;font-weight:500">التسلية والترفيه</text><rect x="268" y="560" width="104" height="44" rx="8" class="fcard"/><circle cx="356" cy="582" r="9" class="fdot"/><text x="312" y="579" text-anchor="middle" class="t" style="font-size:11px;font-weight:700">محادثة</text><text x="312" y="594" text-anchor="middle" class="t m" style="font-size:9.5px;font-weight:500">تجاوز العزلة</text><rect x="268" y="612" width="104" height="44" rx="8" class="fcard b"/><circle cx="356" cy="634" r="9" class="fdot b"/><text x="312" y="631" text-anchor="middle" class="t" style="font-size:11px;font-weight:700">حملة رأي</text><text x="312" y="646" text-anchor="middle" class="t m" style="font-size:9.5px;font-weight:500">التعبئة</text></g></g><g class="tagf" style="animation-delay:0.0s"><rect x="70" y="53" width="100" height="34" rx="17" class="pill"/><text x="120" y="75" text-anchor="middle" class="t" style="font-size:13px;font-weight:600">إعلام</text></g><g class="tagf" style="animation-delay:0.5s"><rect x="70" y="113" width="100" height="34" rx="17" class="pill"/><text x="120" y="135" text-anchor="middle" class="t" style="font-size:13px;font-weight:600">تعليم</text></g><g class="tagf" style="animation-delay:1.0s"><rect x="70" y="173" width="100" height="34" rx="17" class="pill"/><text x="120" y="195" text-anchor="middle" class="t" style="font-size:13px;font-weight:600">ترفيه</text></g><g class="tagf" style="animation-delay:1.5s"><rect x="470" y="53" width="100" height="34" rx="17" class="pill"/><text x="520" y="75" text-anchor="middle" class="t" style="font-size:13px;font-weight:600">تسويق</text></g><g class="tagf" style="animation-delay:2.0s"><rect x="470" y="113" width="100" height="34" rx="17" class="pill"/><text x="520" y="135" text-anchor="middle" class="t" style="font-size:13px;font-weight:600">حوار</text></g><g class="tagf" style="animation-delay:2.5s"><rect x="470" y="173" width="100" height="34" rx="17" class="pill"/><text x="520" y="195" text-anchor="middle" class="t" style="font-size:13px;font-weight:600">رأي عام</text></g></svg><figcaption><span class="eyebrow">موشن جرافيك</span>شاشة واحدة تؤدي وظائف كثيرة في الوقت نفسه: إخبار وتعليم وتسويق وترفيه وحوار وتعبئة للرأي.</figcaption></figure></div></section>
+
+
+
+<section id="functions"><div class="wrap">
+  <span class="eyebrow">تاسعًا</span>
+  <h2>وظائف الإعلام الجديد</h2>
+  <p class="lead">بنى الباحثون على الوظائف التقليدية للإعلام، ثم أضاف تطور الحاجات الاجتماعية والسياسية والاقتصادية وظائف معاصرة. افتح كل قسم:</p>
+
+  <details>
+    <summary>الوظائف التقليدية عند ولبر شرام (14 وظيفة)</summary>
+    <div class="body"><div class="chips">
+      <span>مراقبة الناس والتعلم منهم</span><span>توسيع آفاق التعرف على العالم</span><span>توسيع التركيز والاهتمام</span>
+      <span>رفع معنوية الناس</span><span>خلق أجواء ملائمة للتنمية</span><span>المساعدة غير المباشرة على تغيير الاتجاه</span>
+      <span>تغذية قنوات الاتصال بين الأشخاص</span><span>تدعيم الحالة الاجتماعية</span><span>توسيع نطاق الحوار السياسي</span>
+      <span>تقوية المعايير الاجتماعية</span><span>تنمية التذوق الفني والأدبي</span><span>التأثير في الاتجاهات الضعيفة وتقويتها</span>
+      <span>العمل مدرّسًا</span><span>المساعدة في جميع أنواع التعليم</span>
+    </div></div>
+  </details>
+
+  <details open="">
+    <summary>الوظائف المعاصرة للإعلام الجديد</summary>
+    <div class="body"><ol class="num-list" style="margin-top:6px">
+      <li><span><strong>تجاوز العزلة</strong> التي يفرضها الاتصال الرقمي عبر المحادثات والحوارات والبريد الإلكتروني.</span></li>
+      <li><span><strong>فورية الإعلام</strong> وسهولة الوصول إلى آلاف المواقع الإخبارية لحظة وقوع الأحداث.</span></li>
+      <li><span><strong>التعبئة</strong> لتأييد أفكار أو مناهضتها، والإسهام في تكوين رأي عام وتنمية المشاركة الديمقراطية.</span></li>
+      <li><span><strong>تدعيم الدعاية</strong> مع غياب المصادر وتحرّي المصداقية، ولها جانب سلبي كالغزو والهيمنة الثقافية.</span></li>
+      <li><span><strong>تقديم معلومات ضخمة ومتنوعة</strong> بفضل سعة التخزين وسهولة الإتاحة.</span></li>
+      <li><span><strong>التعليم</strong> عن بُعد والتعلم الافتراضي والفصول الافتراضية.</span></li>
+      <li><span><strong>التسويق والإعلان</strong> مما يوجّه القرارات الشرائية ويحقق تمويلًا للمواقع.</span></li>
+      <li><span><strong>التسلية والترفيه</strong> عبر المسابقات والألعاب لفئات عمرية متعددة.</span></li>
+    </ol></div>
+  </details>
+
+  <details>
+    <summary>وظائف الإعلام الجديد عند «ساق الله»</summary>
+    <div class="body"><ol class="num-list" style="margin-top:6px">
+      <li><span>سرعة نقل المعلومة دون تأخير، مع وضوح ذكر مصادرها.</span></li>
+      <li><span>وضوح المعلومة ونقلها دون لبس، دون إطالة مملة.</span></li>
+      <li><span>احترام مبدأ وجود الآخر، والتوقف عن أشكال الإعلام القديم المنحاز.</span></li>
+      <li><span>إتاحة الفرصة للجمهور لإبداء الرأي فيما يُعرف بالبث المتبادل.</span></li>
+    </ol></div>
+  </details>
+</div></section>
+<div class="wrap pager"><a href="#go-factors"><small>→ السابق</small><b>العوامل والمميزات</b></a><a class="next" href="#go-traits"><small>التالي ←</small><b>الخصائص والسمات</b></a></div>
+</div>
+
+<div class="page" id="p-traits" data-page="go-traits">
+<header class="page-head"><div class="wrap ph-in">
+  <span class="pg-no" aria-hidden="true">٠٦</span>
+  <svg class="deco" viewBox="0 0 420 420" aria-hidden="true"><defs><linearGradient id="dg" x1="1" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--p);stop-opacity:.45"/><stop offset="1" style="stop-color:var(--p);stop-opacity:0"/></linearGradient></defs><g fill="none" stroke="url(#dg)" stroke-width="5" stroke-linejoin="round"><path d="M190 20H300L120 400H10z"/><path d="M300 120H410L230 500H120z"/></g></svg>
+  <div class="crumb"><a href="#go-home">الرئيسية</a> <i>/</i> الوظائف والخصائص <i>/</i> الخصائص والسمات</div>
+  <h1 class="big">الخصائص <span>والسمات</span></h1>
+  <p class="ph-desc">من الآلات التماثلية إلى الوسائل الرقمية الذكية.</p>
+</div></header>
+<section class="banner"><div class="wrap"><figure class="mg-banner"><svg class="mg" viewBox="0 0 640 260" role="img" aria-label="رسم متحرك: دائرتان تمثلان وسيلتين تتقاطعان في منطقة الالتقاء، وشريط أرقام ثنائية"><circle cx="250" cy="105" r="78" class="vn a"><animate attributeName="cx" values="230;282;230" dur="5s" repeatCount="indefinite"/></circle><circle cx="390" cy="105" r="78" class="vn b"><animate attributeName="cx" values="410;358;410" dur="5s" repeatCount="indefinite"/></circle><text x="190" y="110" text-anchor="middle" class="t" style="font-size:14px;font-weight:700">وسيلة قديمة</text><text x="450" y="110" text-anchor="middle" class="t" style="font-size:14px;font-weight:700">وسيلة جديدة</text><g class="meet"><text x="320" y="102" text-anchor="middle" class="t" style="font-size:15px;font-weight:700">الالتقاء</text><text x="320" y="122" text-anchor="middle" class="t m" style="font-size:11px;font-weight:500">مضامين مشتركة</text></g><defs><clipPath id="bitclip"><rect x="40" y="208" width="560" height="34"/></clipPath></defs><rect x="40" y="208" width="560" height="34" rx="8" class="scr"/><g clip-path="url(#bitclip)"><text x="44" y="231" class="bits" direction="ltr" text-anchor="start">0110 1001 1101 0010 1011 0100 1110 0011 0110 1001 1101 0010 1011 0100 1110 0011 0110 1001 1101 0010 1011 0100 1110 0011 0110 1001 1101 0010 1011 0100 1110 0011 </text></g></svg><figcaption><span class="eyebrow">موشن جرافيك</span>الاستعارة والالتقاء: وسائل الاتصال تقتبس من بعضها وتتقاطع مضامينها، وكل ذلك يجري بلغة رقمية من الصفر والواحد.</figcaption></figure></div></section>
+
+
+
+<section id="traits"><div class="wrap">
+  <span class="eyebrow">عاشرًا وحادي عشر</span>
+  <h2>خصائص وسائل الإعلام الجديد وسماته</h2>
+  <p class="lead">تنقلنا تكنولوجيا الاتصال من آلات تماثلية ذات وظيفة وحيدة إلى آلات رقمية متعددة الوظائف.</p>
+  <div class="grid g2" style="margin-bottom:22px">
+    <div class="card"><h3>🔁 الاستعارة والالتقاء</h3>
+      <p><strong>الاستعارة:</strong> أن تقتبس وسيلة اتصال مواضيع وتقنيات وسيلة أخرى وتطوّرها؛ فمعالجة النصوص تستعير من الآلة الكاتبة، والتلفزيون يستعير الشاشة المقتسمة من الإنترنت.</p>
+      <p style="margin-top:8px"><strong>الالتقاء:</strong> تشابه المضامين وتقاطعها بين وسائل الاتصال المختلفة، مما يؤدي إلى توحّد في معالجتها أو تأثيرات متقاربة.</p></div>
+    <div class="card"><h3>📱 وسائل «ذكية»</h3>
+      <p>تحتوي على حواسيب صغيرة مدمجة؛ فالهاتف لم يعد للاتصال فقط بل لمعالجة النصوص والإنترنت وتنظيم المواعيد. والمدونات والصحافة الإلكترونية تتيح التعليق والحوار مع الكتّاب، وهو ما لا توفره الصحافة الورقية.</p></div>
+  </div>
+
+  <div class="signal">
+    <h3>من النظام التماثلي (Analog) إلى الرقمي (Digital)</h3>
+    <p class="muted" style="margin-bottom:12px">بدّل بين النظامين ولاحظ الفرق:</p>
+    <div class="toggle" role="group">
+      <button id="btn-analog" aria-pressed="true">تماثلي</button>
+      <button id="btn-digital" aria-pressed="false">رقمي</button>
+    </div>
+    <svg viewBox="0 0 600 150" preserveAspectRatio="none" aria-hidden="true">
+      <line x1="0" y1="75" x2="600" y2="75" stroke="#e3e7ef" stroke-dasharray="4 4"></line>
+      <path id="wave-analog" class="wave" stroke="#4f46e5" d="M0 75 C 37 10, 75 10, 112 75 S 187 140, 225 75 S 300 10, 337 75 S 412 140, 450 75 S 525 10, 562 75 S 600 110, 600 110" style="opacity: 1;"></path>
+      <path id="wave-digital" class="wave" stroke="#0f766e" style="opacity:0" d="M0 120 H60 V30 H140 V120 H200 V30 H260 V30 H320 V120 H380 V30 H470 V120 H530 V30 H600"></path>
+      <g id="bits" style="opacity:0;transition:opacity .4s" font-size="16" font-weight="700" fill="#0f766e" text-anchor="middle">
+        <text x="30" y="145">0</text><text x="100" y="20">1</text><text x="170" y="145">0</text><text x="260" y="20">1</text>
+        <text x="350" y="145">0</text><text x="425" y="20">1</text><text x="500" y="145">0</text><text x="565" y="20">1</text>
+      </g>
+    </svg>
+    <p id="signal-text" style="margin-top:10px">في <strong>النظام التماثلي</strong> تُنقل المعلومة على شكل <strong>موجة متسلسلة</strong> تحتوي قيمًا جزئية بين الصفر والواحد، لذلك تكون إمكانية التشويش أكبر.</p>
+  </div>
+
+  <h3 style="margin:28px 0 12px">مقارنة سريعة: الإعلام التقليدي والإعلام الجديد</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>وجه المقارنة</th><th>الإعلام التقليدي</th><th>الإعلام الجديد</th></tr></thead>
+    <tbody>
+      <tr><td>مسار الرسالة</td><td>خطّي في اتجاه واحد من مصدر مركزي</td><td>متعدد الاتجاهات وتفاعلي</td></tr>
+      <tr><td>دور الجمهور</td><td>متلقٍّ سلبي</td><td>مشارك وأحيانًا صانع للخبر</td></tr>
+      <tr><td>التوقيت</td><td>متزامن: يُبث في وقت محدد</td><td>غير متزامن: متى شاء المتلقي</td></tr>
+      <tr><td>شكل المحتوى</td><td>وسائل منفصلة (مطبوع، مسموع، مرئي)</td><td>وسائط متعددة مندمجة</td></tr>
+      <tr><td>النظام التقني</td><td>تماثلي (Analog)</td><td>رقمي (Digital)</td></tr>
+      <tr><td>من ينشر؟</td><td>المؤسسات الإعلامية</td><td>المؤسسات والأفراد بتكلفة منخفضة</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+<div class="wrap pager"><a href="#go-functions"><small>→ السابق</small><b>الوظائف</b></a><a class="next" href="#go-quiz"><small>التالي ←</small><b>اختبر نفسك</b></a></div>
+</div>
+
+<div class="page" id="p-quiz" data-page="go-quiz">
+<header class="page-head"><div class="wrap ph-in">
+  <span class="pg-no" aria-hidden="true">٠٧</span>
+  <svg class="deco" viewBox="0 0 420 420" aria-hidden="true"><defs><linearGradient id="dg" x1="1" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--p);stop-opacity:.45"/><stop offset="1" style="stop-color:var(--p);stop-opacity:0"/></linearGradient></defs><g fill="none" stroke="url(#dg)" stroke-width="5" stroke-linejoin="round"><path d="M190 20H300L120 400H10z"/><path d="M300 120H410L230 500H120z"/></g></svg>
+  <div class="crumb"><a href="#go-home">الرئيسية</a> <i>/</i> اختبر نفسك</div>
+  <h1 class="big">اختبر <span>نفسك</span></h1>
+  <p class="ph-desc">ثمانية أسئلة سريعة من محتوى الموقع.</p>
+</div></header>
+
+<section id="quiz"><div class="wrap">
+  <span class="eyebrow">تفاعل</span>
+  <h2>اختبر نفسك</h2>
+  <p class="lead">أسئلة سريعة من محتوى الموقع، اختر الإجابة وستظهر النتيجة فورًا.</p>
+  <div id="quiz-box"><div class="q"><p>1. الإعلام الجديد هو نتاج اندماج ثلاثة عناصر، هي:</p><div class="opts"><button class="opt" data-q="0" data-o="0">الصحف والإذاعة والتلفزيون</button><button class="opt" data-q="0" data-o="1">الكمبيوتر والشبكات والوسائط المتعددة</button><button class="opt" data-q="0" data-o="2">الهاتف والبريد والتلغراف</button></div></div><div class="q"><p>2. ما الخاصية التي أضافها الإعلام الجديد ولا يوفّرها الإعلام القديم؟</p><div class="opts"><button class="opt" data-q="1" data-o="0">الانتشار</button><button class="opt" data-q="1" data-o="1">الترفيه</button><button class="opt" data-q="1" data-o="2">التفاعل</button></div></div><div class="q"><p>3. من صنّف الإعلام الجديد إلى: تكنولوجيا قديمة وجديدة ومختلطة؟</p><div class="opts"><button class="opt" data-q="2" data-o="0">ريتشارد ديفيس وديانا أوين</button><button class="opt" data-q="2" data-o="1">مانويل كاستلز</button><button class="opt" data-q="2" data-o="2">ولبر شرام</button></div></div><div class="q"><p>4. المقصود بـ«غياب التزامنية»:</p><div class="opts"><button class="opt" data-q="3" data-o="0">انقطاع البث بشكل مفاجئ</button><button class="opt" data-q="3" data-o="1">عدم الحاجة لوجود المرسل والمتلقي في الوقت نفسه</button><button class="opt" data-q="3" data-o="2">تأخر وصول الأخبار</button></div></div><div class="q"><p>5. المرحلة الأولى من مراحل بيئة الإعلام الإلكتروني الجديد هي:</p><div class="opts"><button class="opt" data-q="4" data-o="0">الجمهور المتلقي</button><button class="opt" data-q="4" data-o="1">وسيلة الاتصال</button><button class="opt" data-q="4" data-o="2">ساحة الأحداث ومصادر المعلومات</button></div></div><div class="q"><p>6. في النظام الرقمي تُنقل المعلومات على شكل:</p><div class="opts"><button class="opt" data-q="5" data-o="0">أرقام منفصلة (0 و1)</button><button class="opt" data-q="5" data-o="1">موجة متسلسلة</button><button class="opt" data-q="5" data-o="2">إشارات ضوئية فقط</button></div></div><div class="q"><p>7. «تشابه المضامين وتقاطعها بين وسائل الاتصال» هو تعريف:</p><div class="opts"><button class="opt" data-q="6" data-o="0">الاستعارة</button><button class="opt" data-q="6" data-o="1">الالتقاء</button><button class="opt" data-q="6" data-o="2">التفتيت</button></div></div><div class="q"><p>8. العوامل الرئيسية وراء ظهور الإعلام الجديد:</p><div class="opts"><button class="opt" data-q="7" data-o="0">تقنية واقتصادية وسياسية</button><button class="opt" data-q="7" data-o="1">دينية وثقافية</button><button class="opt" data-q="7" data-o="2">جغرافية ومناخية</button></div></div></div>
+  <div class="score"><span id="score-text">النتيجة: 0 من 0</span><button id="reset">إعادة الاختبار</button></div>
+</div></section>
+<div class="wrap pager"><a href="#go-traits"><small>→ السابق</small><b>الخصائص والسمات</b></a><a class="next" href="#go-about"><small>التالي ←</small><b>فريق العمل</b></a></div>
+</div>
+
+<div class="page" id="p-about" data-page="go-about">
+<header class="page-head"><div class="wrap ph-in">
+  <span class="pg-no" aria-hidden="true">٠٨</span>
+  <svg class="deco" viewBox="0 0 420 420" aria-hidden="true"><defs><linearGradient id="dg" x1="1" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--p);stop-opacity:.45"/><stop offset="1" style="stop-color:var(--p);stop-opacity:0"/></linearGradient></defs><g fill="none" stroke="url(#dg)" stroke-width="5" stroke-linejoin="round"><path d="M190 20H300L120 400H10z"/><path d="M300 120H410L230 500H120z"/></g></svg>
+  <div class="crumb"><a href="#go-home">الرئيسية</a> <i>/</i> فريق العمل</div>
+  <h1 class="big">فريق <span>العمل</span></h1>
+  <p class="ph-desc">المشروع العملي الجماعي – المسار الأول: إنشاء موقع ويب.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="grid g2">
+    <div class="card">
+      <h3>أعضاء الفريق</h3>
+      <p>جامعة الملك فيصل – كلية الآداب – قسم الإعلام</p>
+      <p>المقرر: اسم المقرر</p>
+      <div class="chips" style="margin-top:10px"><span>اسم العضوة 1</span><span>اسم العضوة 2</span><span>اسم العضوة 3</span><span>اسم العضوة 4</span></div>
+    </div>
+    <div class="card">
+      <h3>المرجع</h3>
+      <ol>
+        <li>المادة العلمية للمقرر – الوحدة التعليمية الرابعة: «الإعلام الجديد»، ص 82–103.</li>
+        <li>Davis, R. &amp; Owen, D. — New Media and American Politics (كما ورد في المادة العلمية).</li>
+      </ol>
+    </div>
+  </div>
+</div></section>
+<div class="wrap pager"><a href="#go-quiz"><small>→ السابق</small><b>اختبر نفسك</b></a></div>
+</div>
+<footer class="site-foot"><div class="wrap">
+  <div class="ft-grid">
+    <div><div class="ft-brand"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><rect x="3" y="3" width="42" height="42" rx="12" class="mk-bg"/><g fill="none" stroke-width="2.6" stroke-linecap="round" class="mk-ln"><path d="M24 11v26M11 24h26M15 15l18 18M33 15L15 33"/></g><circle cx="24" cy="24" r="5" class="mk-dot"/></svg><b>الإعلام الجديد</b></div>
+      <p>موقع تعليمي تفاعلي يلخّص الوحدة التعليمية الرابعة «الإعلام الجديد» بالنص والرسوم المتحركة والاختبار التفاعلي.</p></div>
+    <div><h3>الصفحات</h3><ul class="ft-links">
+      <li><a href="#go-intro">البدايات والمفهوم</a></li><li><a href="#go-names">التسميات والتصنيفات</a></li>
+      <li><a href="#go-environment">بيئة الإعلام الإلكتروني</a></li><li><a href="#go-factors">العوامل والمميزات</a></li>
+      <li><a href="#go-functions">الوظائف</a></li><li><a href="#go-traits">الخصائص والسمات</a></li>
+      <li><a href="#go-quiz">اختبر نفسك</a></li><li><a href="#go-about">فريق العمل</a></li></ul></div>
+    <div><h3>المشروع</h3><p>جامعة الملك فيصل، الأحساء<br>كلية الآداب، قسم الإعلام<br>المسار الأول: إنشاء موقع ويب متعدد الوسائط</p>
+      <p class="ft-ref">المرجع: المادة العلمية للمقرر، الوحدة الرابعة، ص ٨٢–١٠٣</p></div>
+  </div>
+  <div class="ft-bottom">مشروع طلابي لأغراض تعليمية، وليس موقعًا رسميًا للجامعة · ١٤٤٨هـ / ٢٠٢٦م</div>
+</div></footer>
+<script>
+  const $ = id => document.getElementById(id);
+
+  // definitions tabs
+  if ($('def-tabs')) {
+  const defs = [
+    ['اندماج ثلاثة عناصر', 'العملية الاتصالية الناتجة من اندماج ثلاثة عناصر: <strong>الكمبيوتر، والشبكات، والوسائط المتعددة</strong>.'],
+    ['الحاسب الآلي', 'وسائل الإعلام التي تعتمد على الحاسب الآلي في إنتاج المعلومات وتخزينها وتوزيعها، بأسلوب ميسّر وسعر منخفض، وتتيح التفاعل المباشر، وتتطلب انتباهًا من المتلقي، وتدمج وسائل الإعلام التقليدية.'],
+    ['الرقمي التفاعلي', 'كل أنواع الإعلام الرقمي الذي يُقدَّم في شكل تفاعلي.'],
+    ['التزاوج', 'الإعلام الذي تولّد من التزاوج بين تكنولوجيات الاتصال والبث الجديدة والتقليدية مع الكمبيوتر وشبكاته، ونشأت داخله حالة تزامن في إرسال النصوص والصور المتحركة والثابتة والأصوات.'],
+    ['جونز (Jones)', 'يقرّ جونز بعدم وجود إجابة قاطعة لأن هذا الإعلام في مرحلة نشوء، ويعرّفه بأنه: «مصطلح يُستخدم لوصف أشكال من الاتصال الإلكتروني أصبحت ممكنة باستخدام الكمبيوتر، كمقابل للإعلام القديم الذي يشمل الصحافة المكتوبة والتلفزيون والراديو، وغيرها من الوسائل الساكنة».'],
+  ];
+  function showDef(i){
+    document.querySelectorAll('#def-tabs .tab').forEach((t,j) => t.setAttribute('aria-selected', i === j));
+    $('def-panel').innerHTML = `<p>${defs[i][1]}</p>`;
+  }
+  $('def-tabs').innerHTML = defs.map((d,i) => `<button class="tab" role="tab" data-i="${i}">${i+1}. ${d[0]}</button>`).join('');
+  $('def-tabs').onclick = e => { const b = e.target.closest('.tab'); if (b) showDef(+b.dataset.i); };
+  showDef(0);
+  }
+
+  // environment stages
+  if ($('stages')) {
+  const stages = [
+    ['ساحة الأحداث', 'ساحة الأحداث ومصادر المعلومات: لم يعد فيها الصحفيون المحترفون وحدهم، بل صحفيون هواة ومستقلون وغير محترفين بانتماءات وأهداف مختلفة، جاهزون لنقل الأخبار في التوّ واللحظة.'],
+    ['جهة الاتصال', 'يزداد التنوع وتظهر قنوات إلكترونية متعددة: أفراد ومنظمات وأحزاب ومدونون. وصار على الصحيفة أن تدير موقعًا إلكترونيًا ونسخة ورقية وتبث عبر الهاتف، مما يتطلب تكاملًا بين الصحفيين وفريق تقني من مصممي الويب ومديري قواعد البيانات.'],
+    ['وسيلة الاتصال', 'لم تعد النسخة الورقية وحدها، بل موقع الوسيلة على الإنترنت أو قناة معلومات تبيع المحتوى؛ تبقى الوسيلة المطبوعة عمودها الفقري، وتعمل الوسائل الأخرى أجزاءً داعمة للمنافسة وتنويع الدخل.'],
+    ['الجمهور المتلقي', 'جمهور مختلف كليًا: ينتقل من التلقي السلبي إلى التفاعل الإيجابي؛ يقرأ ويسمع ويرى ويبحث ويعلّق، وأحيانًا يصبح صانعًا للأخبار، ويملك أدوات التصوير والنشر عبر هاتفه الذكي.'],
+  ];
+  $('stages').innerHTML = stages.map((s,i) => `<button class="stage" data-i="${i}" aria-pressed="false"><span class="n">${i+1}</span><b>${s[0]}</b></button>`).join('');
+  function showStage(i){
+    document.querySelectorAll('.stage').forEach((b,j) => b.setAttribute('aria-pressed', i === j));
+    $('stage-detail').innerHTML = `<h3>المرحلة ${['الأولى','الثانية','الثالثة','الرابعة'][i]}: ${stages[i][0]}</h3><p class="muted">${stages[i][1]}</p>`;
+  }
+  $('stages').onclick = e => { const b = e.target.closest('.stage'); if (b) showStage(+b.dataset.i); };
+  showStage(0);
+  }
+
+  // analog / digital
+  if ($('btn-analog')) {
+  const sigText = {
+    analog: 'في <strong>النظام التماثلي</strong> تُنقل المعلومة على شكل <strong>موجة متسلسلة</strong> تحتوي قيمًا جزئية بين الصفر والواحد، لذلك تكون إمكانية التشويش أكبر.',
+    digital: 'في <strong>النظام الرقمي</strong> تُنقل المعلومة على شكل <strong>أرقام منفصلة (0 و1)</strong> يترجمها المستقبل إلى صوت أو صورة، فيكون أشد نقاءً وخاليًا من التشويش، ويسهل دمجه مع الحاسوب.'
+  };
+  function setSignal(m){
+    const d = m === 'digital';
+    $('wave-analog').style.opacity = d ? 0 : 1;
+    $('wave-digital').style.opacity = d ? 1 : 0;
+    $('bits').style.opacity = d ? 1 : 0;
+    $('btn-analog').setAttribute('aria-pressed', !d);
+    $('btn-digital').setAttribute('aria-pressed', d);
+    $('signal-text').innerHTML = sigText[m];
+  }
+  $('btn-analog').onclick = () => setSignal('analog');
+  $('btn-digital').onclick = () => setSignal('digital');
+  setSignal('analog');
+  }
+
+  // quiz
+  if ($('quiz-box')) {
+  const quiz = [
+    ['الإعلام الجديد هو نتاج اندماج ثلاثة عناصر، هي:', ['الصحف والإذاعة والتلفزيون', 'الكمبيوتر والشبكات والوسائط المتعددة', 'الهاتف والبريد والتلغراف'], 1],
+    ['ما الخاصية التي أضافها الإعلام الجديد ولا يوفّرها الإعلام القديم؟', ['الانتشار', 'الترفيه', 'التفاعل'], 2],
+    ['من صنّف الإعلام الجديد إلى: تكنولوجيا قديمة وجديدة ومختلطة؟', ['ريتشارد ديفيس وديانا أوين', 'مانويل كاستلز', 'ولبر شرام'], 0],
+    ['المقصود بـ«غياب التزامنية»:', ['انقطاع البث بشكل مفاجئ', 'عدم الحاجة لوجود المرسل والمتلقي في الوقت نفسه', 'تأخر وصول الأخبار'], 1],
+    ['المرحلة الأولى من مراحل بيئة الإعلام الإلكتروني الجديد هي:', ['الجمهور المتلقي', 'وسيلة الاتصال', 'ساحة الأحداث ومصادر المعلومات'], 2],
+    ['في النظام الرقمي تُنقل المعلومات على شكل:', ['أرقام منفصلة (0 و1)', 'موجة متسلسلة', 'إشارات ضوئية فقط'], 0],
+    ['«تشابه المضامين وتقاطعها بين وسائل الاتصال» هو تعريف:', ['الاستعارة', 'الالتقاء', 'التفتيت'], 1],
+    ['العوامل الرئيسية وراء ظهور الإعلام الجديد:', ['تقنية واقتصادية وسياسية', 'دينية وثقافية', 'جغرافية ومناخية'], 0],
+  ];
+  let answered = 0, correct = 0;
+  function renderQuiz(){
+    answered = correct = 0;
+    $('quiz-box').innerHTML = quiz.map((q,i) => `<div class="q"><p>${i+1}. ${q[0]}</p><div class="opts">${
+      q[1].map((o,j) => `<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join('')}</div></div>`).join('');
+    updateScore();
+  }
+  function updateScore(){ $('score-text').textContent = `النتيجة: ${correct} من ${answered}` + (answered === quiz.length ? (correct === quiz.length ? ' — ممتاز! 🎉' : ' — راجع الأقسام وحاول مرة أخرى') : ''); }
+  $('quiz-box').onclick = e => {
+    const b = e.target.closest('.opt'); if (!b || b.disabled) return;
+    const q = +b.dataset.q, o = +b.dataset.o, right = quiz[q][2];
+    const btns = b.parentElement.querySelectorAll('.opt');
+    btns.forEach(x => x.disabled = true);
+    btns[right].classList.add('right');
+    if (o !== right) b.classList.add('wrong'); else correct++;
+    answered++; updateScore();
+  };
+  $('reset').onclick = renderQuiz;
+  renderQuiz();
+  }
+
+  // a11y tools
+  (function(){
+    const root = document.documentElement;
+    let size = 100;
+    try { size = +localStorage.getItem('fs') || 100; } catch(e){}
+    const apply = () => { root.style.fontSize = size + '%'; try { localStorage.setItem('fs', size); } catch(e){} };
+    if (size !== 100) apply();
+    const up = $('fs-up'), down = $('fs-down'), th = $('theme-btn');
+    if (up) up.onclick = () => { size = Math.min(size + 10, 140); apply(); };
+    if (down) down.onclick = () => { size = Math.max(size - 10, 80); apply(); };
+    try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch(e){}
+    if (th) th.onclick = () => {
+      const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      root.dataset.theme = dark ? 'light' : 'dark';
+      try { localStorage.setItem('theme', root.dataset.theme); } catch(e){}
+    };
+  })();
+
+  // respect reduced motion for SVG animations
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)
+    document.querySelectorAll('svg').forEach(s => s.pauseAnimations && s.pauseAnimations());
+
+  // single-file router: #intro, #names ... show one page at a time
+  (function(){
+    const pages = [...document.querySelectorAll('.page')];
+    const names = pages.map(p => p.dataset.page);
+    function show(){
+      const h = location.hash.slice(1);
+      if (h === 'drawer' || h === 'close' || (h && !names.includes(h))) return;
+      const k = h || 'go-home';
+      pages.forEach(p => p.classList.toggle('active', p.dataset.page === k));
+      document.querySelectorAll('.dnav a').forEach(a => {
+        if (a.getAttribute('href') === '#' + k) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+        const d = a.closest('details'); if (d && a.getAttribute('href') === '#' + k) d.open = true;
+      });
+      window.scrollTo({top: 0, behavior: 'instant'});
+    }
+    window.addEventListener('hashchange', show);
+    show();
+  })();
+</script>
+</body>
+</html>
