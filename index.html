@@ -488,6 +488,17 @@
 
   .page{display:none}
   .page.active{display:block}
+
+  .members{list-style:none;display:grid;gap:10px;margin-top:10px}
+  .members li{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+  .members .av{width:38px;height:38px;border-radius:50%;background:var(--p2);color:var(--gold);display:grid;place-items:center;font-family:var(--display);font-weight:700;flex:none}
+  .course{display:grid;gap:10px;margin-top:10px}
+  .course div{display:grid;grid-template-columns:7.5rem 1fr;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .course div:last-child{border-bottom:0}
+  .course dt{color:var(--muted)}
+  .course dd{font-weight:600}
+  @media (max-width:420px){.course div{grid-template-columns:1fr;gap:0}}
+  .page .grid.g2:has(.members){grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
 </style>
 </head>
 <body>
@@ -875,9 +886,15 @@
   <div class="grid g2">
     <div class="card">
       <h3>أعضاء الفريق</h3>
-      <p>جامعة الملك فيصل – كلية الآداب – قسم الإعلام</p>
-      <p>المقرر: اسم المقرر</p>
-      <div class="chips" style="margin-top:10px"><span>اسم العضوة 1</span><span>اسم العضوة 2</span><span>اسم العضوة 3</span><span>اسم العضوة 4</span></div>
+      <ul class="members"><li><span class="av">ع</span><b>عبدالعزيز رسلان العنزي</b></li><li><span class="av">م</span><b>مشعل شطي الشمري</b></li><li><span class="av">ع</span><b>علي هلال أبو حسن</b></li></ul>
+    </div>
+    <div class="card">
+      <h3>بيانات المقرر</h3>
+      <dl class="course">
+        <div><dt>المقرر</dt><dd>الإعلام الرقمي والشبكات الاجتماعية</dd></div>
+        <div><dt>أستاذ المقرر</dt><dd>د. محمد الشريف</dd></div>
+        <div><dt>الجهة</dt><dd>جامعة الملك فيصل – كلية الآداب – قسم الإعلام</dd></div>
+      </dl>
     </div>
     <div class="card">
       <h3>المرجع</h3>
@@ -899,7 +916,7 @@
       <li><a href="#go-environment">بيئة الإعلام الإلكتروني</a></li><li><a href="#go-factors">العوامل والمميزات</a></li>
       <li><a href="#go-functions">الوظائف</a></li><li><a href="#go-traits">الخصائص والسمات</a></li>
       <li><a href="#go-quiz">اختبر نفسك</a></li><li><a href="#go-about">فريق العمل</a></li></ul></div>
-    <div><h3>المشروع</h3><p>جامعة الملك فيصل، الأحساء<br>كلية الآداب، قسم الإعلام<br>المسار الأول: إنشاء موقع ويب متعدد الوسائط</p>
+    <div><h3>المشروع</h3><p>مقرر الإعلام الرقمي والشبكات الاجتماعية<br>أستاذ المقرر: د. محمد الشريف<br>جامعة الملك فيصل، الأحساء – قسم الإعلام</p>
       <p class="ft-ref">المرجع: المادة العلمية للمقرر، الوحدة الرابعة، ص ٨٢–١٠٣</p></div>
   </div>
   <div class="ft-bottom">مشروع طلابي لأغراض تعليمية، وليس موقعًا رسميًا للجامعة · ١٤٤٨هـ / ٢٠٢٦م</div>
